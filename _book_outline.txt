@@ -1,4 +1,4 @@
-**About this outline:** This outline progresses from foundational mathematical concepts and R basics to more complex modeling techniques and specific applications in physiology. Each section includes potential chapter titles and key topics to be covered, along with suggestions for integrating R examples and visualizations.
+This outline progresses from foundational mathematical concepts and R basics to more complex modeling techniques and specific applications in physiology. Each section includes potential chapter titles and key topics to be covered, along with suggestions for integrating R examples and visualizations.
 
 **Book Title:** The Physiological Blueprint: Modeling Biological Systems with Ordinary Differential Equations in R
 
@@ -129,4 +129,4 @@
 * **Exercises:** Problems at the end of each chapter ranging from conceptual questions to hands-on R modeling tasks, tailored to physiological examples.
 * **Case Studies:** Develop a few running case studies throughout the book, perhaps focusing on specific exercise interventions or physiological conditions related to cardiac autonomic modulation, and use modeling to explore them.
 
-Note to myself: **To achieve the 300-350 page count, I need to adjust the depth of coverage for each topic.** The suggested page ranges for each part and chapter are estimates and can be modified based on how much detail I provide in the explanations, the number and complexity of R examples, and the inclusion of figures and exercises. Remember to keep the language accessible and focus on building intuition and practical skills for your target audience.
+**To achieve the 300-350 page count, we will need to adjust the depth of coverage for each topic.** The suggested page ranges for each part and chapter are estimates and can be modified based on how much detail we provide in the explanations, the number and complexity of R examples, and the inclusion of figures and exercises. Remember to keep the language accessible and focus on building intuition and practical skills for your target audience.
