@@ -13,7 +13,6 @@ book:
   sidebar: 
     title: "The Physiological Blueprint<br><small>Modeling Biological Systems with Ordinary Differential Equations in R</small><br>"
     header: "This book is currently under development"
-    footer: 'Written with <i class="fa-solid fa-heart" style="color: #ff0000;"></i>'
   announcement: "This book is currently under development"
   chapters:
     - index.qmd
@@ -48,7 +47,7 @@ book:
     - appendix_c_solutions_or_hints_to_select_exercises.qmd
     - appendix_d_r_code_snippets_and_examples.qmd
   page-footer: 
-    left: "This book was written by Matías Castillo-Aguilar" 
+    left: "Made by Matías Castillo-Aguilar with <i class='fa-solid fa-heart' style='color: #ff0000;'></i>" 
     right: 
       - icon: github
         href: https://github.com/matcasti
