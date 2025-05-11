@@ -1,12 +1,12 @@
 # Why Model Physiology?
 
-## Introduction to the Power of Mathematical Modeling in Understanding Complex Biological Systems
-
 Welcome to the journey of uncovering the "Physiological Blueprint". As kinesiologists, exercise physiologists, and researchers, we dedicate ourselves to understanding the incredible complexity of the human body. We measure how heart rate changes with exercise intensity, how oxygen consumption reflects metabolic demand, how blood pressure fluctuates during stress, and how the delicate balance of the autonomic nervous system finely tunes cardiac function. We design experiments, collect data, and analyze statistics, all in pursuit of deeper insights into these intricate processes and their interactions.
 
 But sometimes, even with meticulous experimental design and powerful statistical analysis, we find ourselves facing questions that are difficult to answer through experiments alone. How do multiple feedback loops interact simultaneously? What would happen if we could alter a specific physiological parameter in isolation, something impossible to do in a living organism? How does the dynamic interplay between systems unfold over time, and what are the underlying mechanisms driving observed responses? How can we synthesize vast amounts of knowledge about individual components into a cohesive understanding of the whole system?
 
 This is where mathematical modeling, and specifically the use of differential equations, becomes an extraordinarily powerful tool in our physiological toolkit. Forget, for a moment, intimidating equations and abstract symbols. At its heart, mathematical modeling in biology is simply about translating our understanding of physiological processes, their components, and their interactions into a precise, unambiguous language – the language of mathematics. It's about creating a functional diagram, a "blueprint", of a physiological system that we can then analyze, manipulate, and simulate to gain new insights.
+
+## Introduction to the Power of Mathematical Modeling in Understanding Complex Biological Systems
 
 Think about the systems you study daily. Cardiac output is influenced by heart rate and stroke volume. Stroke volume is affected by preload, afterload, and contractility. Preload depends on venous return, which depends on blood volume, posture, and muscle. Heart rate is under the dual control of the sympathetic and parasympathetic nervous systems, themselves influenced by baroreceptors, chemoreceptors, and central command. Exercise layers on metabolic demands, heat production, and shifts in blood flow distribution. It's a vast, interconnected network of dynamic processes.
 

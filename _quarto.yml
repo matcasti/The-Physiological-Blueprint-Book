@@ -3,33 +3,39 @@ project:
 
 book:
   title: "The Physiological Blueprint: Modeling Biological Systems with Ordinary Differential Equations in R"
-  author: "Matías Castillo-Aguilar"
-  date: today
-  sidebar:
-    style: docked
-    background: light
-    footer: 'Made with <i class="fa-solid fa-heart" style="color: #ff0000;"></i>'
+  search: true
+  repo-url: https://github.com/matcasti/The-Physiological-Blueprint-Book
+  repo-actions: [edit, issue]
+  downloads: [pdf, epub]
+  sharing: [twitter, facebook, linkedin]
+  reader-mode: true
+  sidebar: 
+    title: "The Physiological Blueprint<br><small>Modeling Biological Systems with Ordinary Differential Equations in R</small><br>"
+    header: "This book is currently under development"
+    footer: 'Written with <i class="fa-solid fa-heart" style="color: #ff0000;"></i>'
+  announcement: "This book is currently under development"
   chapters:
     - index.qmd
-    - part: part_1_foundations_in_modeling_and_r.qmd
+    - dedication.qmd
+    - part: "Foundations in Modeling and R"
       chapters: 
         - 01-why-model-physiology.qmd
         - 02-a_gentle_introduction_to_r_for_modelers.qmd
         - 03-thinking_dynamically_rates_of_change.qmd
         - 04-building_simple_differential_equation_models.qmd
-    - part: part_2_solving_simulating_and_visualizing_odes_in_r.qmd
+    - part: "Solving, Simulating, and Visualizing ODEs in R"
       chapters: 
         - 05-introduction_to_the_desolve_package.qmd
         - 06-numerical_methods_for_solving_odes.qmd
         - 07-visualizing_model_dynamics.qmd
         - 08-exploring_parameter_sensitivity_and_uncertainty.qmd
-    - part: part_3_modeling_specific_physiological_systems.qmd
+    - part: "Modeling Specific Physiological Systems"
       chapters: 
         - 09-modeling_basic_cardiovascular_dynamics.qmd
         - 10-introducing_autonomic_control_into_models.qmd
         - 11-modeling_exercise_responses.qmd
         - 12-focusing_on_cardiac_autonomic_modulation_models.qmd
-    - part: part_4_advanced_concepts_and_future_directions.qmd
+    - part: "Advanced Concepts and Future Directions"
       chapters: 
         - 13-building_more_complex_models.qmd
         - 14-linking_models_to_data.qmd
@@ -41,7 +47,7 @@ book:
     - appendix_c_solutions_or_hints_to_select_exercises.qmd
     - appendix_d_r_code_snippets_and_examples.qmd
   page-footer: 
-    left: "Copyright 2025, Matías Castillo-Aguilar" 
+    left: "This book was written by Matías Castillo-Aguilar" 
     right: 
       - icon: github
         href: https://github.com/matcasti
@@ -58,7 +64,8 @@ format:
       - cosmo
       - brand
   pdf:
-    documentclass: scrreprt
+    documentclass: book
+  epub: default
 
 
 
