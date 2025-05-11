@@ -1,1 +1,0 @@
-# Solving, Simulating, and Visualizing ODEs in R
