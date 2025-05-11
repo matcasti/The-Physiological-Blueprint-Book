@@ -47,7 +47,7 @@ book:
     - appendix_c_solutions_or_hints_to_select_exercises.qmd
     - appendix_d_r_code_snippets_and_examples.qmd
   page-footer: 
-    left: "Made by Matías Castillo-Aguilar with <i class='fa-solid fa-heart' style='color: #ff0000;'></i>" 
+    left: "Made with <i class='fa-solid fa-heart' style='color: #ff0000;'></i> by Matías Castillo-Aguilar" 
     right: 
       - icon: github
         href: https://github.com/matcasti
@@ -60,9 +60,11 @@ bibliography: references.bib
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: 
+      light: 
+        - cosmo
+        - brand
+      dark: darkly
   pdf:
     documentclass: book
   epub: default

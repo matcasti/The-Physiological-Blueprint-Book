@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-<head>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.29">
 
-<meta charset="utf-8" />
-<meta name="generator" content="quarto-1.7.29" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>The Physiological Blueprint</title>
@@ -24,7 +22,31 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-<!-- htmldependencies:E3FAD763 -->
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./dedication.html" rel="next">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-748b535e376f14d4692bf2b2e5fd6380.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7a339148c3b2635d23d0fec43941109e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-485d01fc63b59abcd3ee1bf1e8e2748d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -56,22 +78,178 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body>
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" role="link"
-        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -82,25 +260,25 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="quarto-sidebar-header"><div class="sidebar-header-item">
+<p>This book is currently under development</p>
+</div></div>
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="/">
-      The Physiological Blueprint&lt;br&gt;&lt;small&gt;Modeling Biological Systems with Ordinary Differential Equations in R&lt;/small&gt;&lt;br&gt;
-      </a> 
+      <a href="./">The Physiological Blueprint<br><small>Modeling Biological Systems with Ordinary Differential Equations in R</small><br></a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/matcasti/The-Physiological-Blueprint-Book"  title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/matcasti/The-Physiological-Blueprint-Book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="/The-Physiological-Blueprint.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="./The-Physiological-Blueprint.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="/The-Physiological-Blueprint.epub">
+            <a class="dropdown-item sidebar-tools-main-item" href="./The-Physiological-Blueprint.epub">
               <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
@@ -130,6 +308,7 @@ ul.task-list li input[type="checkbox"] {
           </li>
       </ul>
     </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -147,19 +326,19 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/dedication.html" class="sidebar-item-text sidebar-link">
+  <a href="./dedication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dedication</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1"  role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Foundations in Modeling and R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -168,33 +347,33 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/01-why-model-physiology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>1</span>  <span class='chapter-title'>Why Model Physiology?</span></span></a>
+  <a href="./01-why-model-physiology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Model Physiology?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/02-a_gentle_introduction_to_r_for_modelers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>2</span>  <span class='chapter-title'>A Gentle Introduction to R for Modelers</span></span></a>
+  <a href="./02-a_gentle_introduction_to_r_for_modelers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">A Gentle Introduction to R for Modelers</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/03-thinking_dynamically_rates_of_change.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>3</span>  <span class='chapter-title'>Thinking Dynamically: Rates of Change</span></span></a>
+  <a href="./03-thinking_dynamically_rates_of_change.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Thinking Dynamically: Rates of Change</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/04-building_simple_differential_equation_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>4</span>  <span class='chapter-title'>Building Simple Differential Equation Models</span></span></a>
+  <a href="./04-building_simple_differential_equation_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Building Simple Differential Equation Models</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2"  role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Solving, Simulating, and Visualizing ODEs in R</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -203,33 +382,33 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/05-introduction_to_the_desolve_package.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>5</span>  <span class='chapter-title'>Introduction to the `deSolve` Package</span></span></a>
+  <a href="./05-introduction_to_the_desolve_package.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to the <code>deSolve</code> Package</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/06-numerical_methods_for_solving_odes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>6</span>  <span class='chapter-title'>Numerical Methods for Solving ODEs</span></span></a>
+  <a href="./06-numerical_methods_for_solving_odes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical Methods for Solving ODEs</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/07-visualizing_model_dynamics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>7</span>  <span class='chapter-title'>Visualizing Model Dynamics</span></span></a>
+  <a href="./07-visualizing_model_dynamics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Visualizing Model Dynamics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/08-exploring_parameter_sensitivity_and_uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>8</span>  <span class='chapter-title'>Exploring Parameter Sensitivity and Uncertainty</span></span></a>
+  <a href="./08-exploring_parameter_sensitivity_and_uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploring Parameter Sensitivity and Uncertainty</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3"  role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Modeling Specific Physiological Systems</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -238,33 +417,33 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/09-modeling_basic_cardiovascular_dynamics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>9</span>  <span class='chapter-title'>Modeling Basic Cardiovascular Dynamics</span></span></a>
+  <a href="./09-modeling_basic_cardiovascular_dynamics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modeling Basic Cardiovascular Dynamics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/10-introducing_autonomic_control_into_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>10</span>  <span class='chapter-title'>Introducing Autonomic Control into Models</span></span></a>
+  <a href="./10-introducing_autonomic_control_into_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Introducing Autonomic Control into Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/11-modeling_exercise_responses.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>11</span>  <span class='chapter-title'>Modeling Exercise Responses</span></span></a>
+  <a href="./11-modeling_exercise_responses.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Modeling Exercise Responses</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/12-focusing_on_cardiac_autonomic_modulation_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>12</span>  <span class='chapter-title'>Focusing on Cardiac Autonomic Modulation Models</span></span></a>
+  <a href="./12-focusing_on_cardiac_autonomic_modulation_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Focusing on Cardiac Autonomic Modulation Models</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4"  role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Advanced Concepts and Future Directions</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -273,33 +452,33 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/13-building_more_complex_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>13</span>  <span class='chapter-title'>Building More Complex Models</span></span></a>
+  <a href="./13-building_more_complex_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Building More Complex Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/14-linking_models_to_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>14</span>  <span class='chapter-title'>Linking Models to Data</span></span></a>
+  <a href="./14-linking_models_to_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Linking Models to Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/15-limitations_and_future_directions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>15</span>  <span class='chapter-title'>Limitations and Future Directions</span></span></a>
+  <a href="./15-limitations_and_future_directions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Limitations and Future Directions</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5"  role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -308,26 +487,26 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/appendix_a_r_installation_guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>A</span>  <span class='chapter-title'>R Installation Guide</span></span></a>
+  <a href="./appendix_a_r_installation_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">R Installation Guide</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/appendix_b_glossary_of_mathematical_and_physiological_terms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>B</span>  <span class='chapter-title'>Glossary of Mathematical and Physiological Terms</span></span></a>
+  <a href="./appendix_b_glossary_of_mathematical_and_physiological_terms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Glossary of Mathematical and Physiological Terms</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/appendix_c_solutions_or_hints_to_select_exercises.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>C</span>  <span class='chapter-title'>Solutions or Hints to Select Exercises</span></span></a>
+  <a href="./appendix_c_solutions_or_hints_to_select_exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Solutions or Hints to Select Exercises</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/appendix_d_r_code_snippets_and_examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class='chapter-number'>D</span>  <span class='chapter-title'>R Code Snippets and Examples</span></span></a>
+  <a href="./appendix_d_r_code_snippets_and_examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">R Code Snippets and Examples</span></span></a>
   </div>
 </li>
       </ul>
@@ -335,13 +514,20 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -362,13 +548,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#welcome" id="toc-welcome">Welcome</a></li>
-  </ul>
-</nav>
+
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">Welcome</h1>
 <p>To the dedicated kinesiologist, exercise physiologist, researcher, and student embarking on the fascinating journey of understanding the human body: Welcome.</p>
@@ -384,28 +564,26 @@ ul.task-list li input[type="checkbox"] {
 <p>Our approach throughout is practical and biology-driven. We will minimize abstract mathematical proofs, focusing instead on the biological interpretation of the equations and the insights gained from simulating model behavior. Visualization is key; we will emphasize how plotting your model’s output in R is essential for understanding the dynamics and comparing them to what you observe in the lab or clinic.</p>
 <p>We are confident that by the end of this book, you will not only understand the principles of physiological modeling with ODEs but will also possess the practical skills in R to begin building, exploring, and visualizing your own dynamic models. You will be equipped to ask and answer new types of questions about the “Physiological Blueprint”, adding a powerful dimension to your research capabilities.</p>
 <p>We are excited for you to embark on this journey and discover the immense potential of mathematical modeling to deepen your understanding of the complex, dynamic, and beautiful systems you study.</p>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">The Physiological Blueprint<br><small>Modeling Biological Systems with Ordinary Differential Equations in R</small><br></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">The Physiological Blueprint</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uZXh0">Dedication</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbmRleC5odG1sV2VsY29tZQ==">Welcome</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9kZWRpY2F0aW9uLmh0bWxEZWRpY2F0aW9u">Dedication</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMQ==">Foundations in Modeling and R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wMS13aHktbW9kZWwtcGh5c2lvbG9neS5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4xPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPldoeS1Nb2RlbC1QaHlzaW9sb2d5Pzwvc3Bhbj4="><span class="chapter-number">1</span>  <span class="chapter-title">Why Model Physiology?</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wMi1hX2dlbnRsZV9pbnRyb2R1Y3Rpb25fdG9fcl9mb3JfbW9kZWxlcnMuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Mjwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5BLUdlbnRsZS1JbnRyb2R1Y3Rpb24tdG8tUi1mb3ItTW9kZWxlcnM8L3NwYW4+"><span class="chapter-number">2</span>  <span class="chapter-title">A Gentle Introduction to R for Modelers</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wMy10aGlua2luZ19keW5hbWljYWxseV9yYXRlc19vZl9jaGFuZ2UuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+Mzwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5UaGlua2luZy1EeW5hbWljYWxseTotUmF0ZXMtb2YtQ2hhbmdlPC9zcGFuPg=="><span class="chapter-number">3</span>  <span class="chapter-title">Thinking Dynamically: Rates of Change</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wNC1idWlsZGluZ19zaW1wbGVfZGlmZmVyZW50aWFsX2VxdWF0aW9uX21vZGVscy5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz40PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkJ1aWxkaW5nLVNpbXBsZS1EaWZmZXJlbnRpYWwtRXF1YXRpb24tTW9kZWxzPC9zcGFuPg=="><span class="chapter-number">4</span>  <span class="chapter-title">Building Simple Differential Equation Models</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMg==">Solving, Simulating, and Visualizing ODEs in R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wNS1pbnRyb2R1Y3Rpb25fdG9fdGhlX2Rlc29sdmVfcGFja2FnZS5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz41PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkludHJvZHVjdGlvbi10by10aGUtYGRlU29sdmVgLVBhY2thZ2U8L3NwYW4+"><span class="chapter-number">5</span>  <span class="chapter-title">Introduction to the <code>deSolve</code> Package</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wNi1udW1lcmljYWxfbWV0aG9kc19mb3Jfc29sdmluZ19vZGVzLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjY8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+TnVtZXJpY2FsLU1ldGhvZHMtZm9yLVNvbHZpbmctT0RFczwvc3Bhbj4="><span class="chapter-number">6</span>  <span class="chapter-title">Numerical Methods for Solving ODEs</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wNy12aXN1YWxpemluZ19tb2RlbF9keW5hbWljcy5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz43PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPlZpc3VhbGl6aW5nLU1vZGVsLUR5bmFtaWNzPC9zcGFuPg=="><span class="chapter-number">7</span>  <span class="chapter-title">Visualizing Model Dynamics</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wOC1leHBsb3JpbmdfcGFyYW1ldGVyX3NlbnNpdGl2aXR5X2FuZF91bmNlcnRhaW50eS5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz44PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkV4cGxvcmluZy1QYXJhbWV0ZXItU2Vuc2l0aXZpdHktYW5kLVVuY2VydGFpbnR5PC9zcGFuPg=="><span class="chapter-number">8</span>  <span class="chapter-title">Exploring Parameter Sensitivity and Uncertainty</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMw==">Modeling Specific Physiological Systems</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8wOS1tb2RlbGluZ19iYXNpY19jYXJkaW92YXNjdWxhcl9keW5hbWljcy5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz45PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPk1vZGVsaW5nLUJhc2ljLUNhcmRpb3Zhc2N1bGFyLUR5bmFtaWNzPC9zcGFuPg=="><span class="chapter-number">9</span>  <span class="chapter-title">Modeling Basic Cardiovascular Dynamics</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8xMC1pbnRyb2R1Y2luZ19hdXRvbm9taWNfY29udHJvbF9pbnRvX21vZGVscy5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4xMDwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5JbnRyb2R1Y2luZy1BdXRvbm9taWMtQ29udHJvbC1pbnRvLU1vZGVsczwvc3Bhbj4="><span class="chapter-number">10</span>  <span class="chapter-title">Introducing Autonomic Control into Models</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8xMS1tb2RlbGluZ19leGVyY2lzZV9yZXNwb25zZXMuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+MTE8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+TW9kZWxpbmctRXhlcmNpc2UtUmVzcG9uc2VzPC9zcGFuPg=="><span class="chapter-number">11</span>  <span class="chapter-title">Modeling Exercise Responses</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8xMi1mb2N1c2luZ19vbl9jYXJkaWFjX2F1dG9ub21pY19tb2R1bGF0aW9uX21vZGVscy5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz4xMjwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5Gb2N1c2luZy1vbi1DYXJkaWFjLUF1dG9ub21pYy1Nb2R1bGF0aW9uLU1vZGVsczwvc3Bhbj4="><span class="chapter-number">12</span>  <span class="chapter-title">Focusing on Cardiac Autonomic Modulation Models</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tNA==">Advanced Concepts and Future Directions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8xMy1idWlsZGluZ19tb3JlX2NvbXBsZXhfbW9kZWxzLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjEzPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkJ1aWxkaW5nLU1vcmUtQ29tcGxleC1Nb2RlbHM8L3NwYW4+"><span class="chapter-number">13</span>  <span class="chapter-title">Building More Complex Models</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8xNC1saW5raW5nX21vZGVsc190b19kYXRhLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPjE0PC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkxpbmtpbmctTW9kZWxzLXRvLURhdGE8L3NwYW4+"><span class="chapter-number">14</span>  <span class="chapter-title">Linking Models to Data</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi8xNS1saW1pdGF0aW9uc19hbmRfZnV0dXJlX2RpcmVjdGlvbnMuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+MTU8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+TGltaXRhdGlvbnMtYW5kLUZ1dHVyZS1EaXJlY3Rpb25zPC9zcGFuPg=="><span class="chapter-number">15</span>  <span class="chapter-title">Limitations and Future Directions</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9yZWZlcmVuY2VzLmh0bWxSZWZlcmVuY2Vz">References</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tNQ==">Appendices</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9hcHBlbmRpeF9hX3JfaW5zdGFsbGF0aW9uX2d1aWRlLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPkE8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+Ui1JbnN0YWxsYXRpb24tR3VpZGU8L3NwYW4+"><span class="chapter-number">A</span>  <span class="chapter-title">R Installation Guide</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9hcHBlbmRpeF9iX2dsb3NzYXJ5X29mX21hdGhlbWF0aWNhbF9hbmRfcGh5c2lvbG9naWNhbF90ZXJtcy5odG1sPHNwYW4tY2xhc3M9J2NoYXB0ZXItbnVtYmVyJz5CPC9zcGFuPi0tPHNwYW4tY2xhc3M9J2NoYXB0ZXItdGl0bGUnPkdsb3NzYXJ5LW9mLU1hdGhlbWF0aWNhbC1hbmQtUGh5c2lvbG9naWNhbC1UZXJtczwvc3Bhbj4="><span class="chapter-number">B</span>  <span class="chapter-title">Glossary of Mathematical and Physiological Terms</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9hcHBlbmRpeF9jX3NvbHV0aW9uc19vcl9oaW50c190b19zZWxlY3RfZXhlcmNpc2VzLmh0bWw8c3Bhbi1jbGFzcz0nY2hhcHRlci1udW1iZXInPkM8L3NwYW4+LS08c3Bhbi1jbGFzcz0nY2hhcHRlci10aXRsZSc+U29sdXRpb25zLW9yLUhpbnRzLXRvLVNlbGVjdC1FeGVyY2lzZXM8L3NwYW4+"><span class="chapter-number">C</span>  <span class="chapter-title">Solutions or Hints to Select Exercises</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9hcHBlbmRpeF9kX3JfY29kZV9zbmlwcGV0c19hbmRfZXhhbXBsZXMuaHRtbDxzcGFuLWNsYXNzPSdjaGFwdGVyLW51bWJlcic+RDwvc3Bhbj4tLTxzcGFuLWNsYXNzPSdjaGFwdGVyLXRpdGxlJz5SLUNvZGUtU25pcHBldHMtYW5kLUV4YW1wbGVzPC9zcGFuPg=="><span class="chapter-number">D</span>  <span class="chapter-title">R Code Snippets and Examples</span></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLVdlbGNvbWU=">Welcome</span></p>
-<div class="hidden quarto-markdown-envelope-contents" data-render-id="c2lkZWJhci1oZWFkZXI=">
-<div class="sidebar-header-item">
-<p>This book is currently under development</p>
-</div>
-</div>
-<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLWxlZnQ=">
-<p>Made by Matías Castillo-Aguilar with <i class='fa-solid fa-heart' style='color: #ff0000;'></i></p>
-</div>
-<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLXJpZ2h0LWh0dHBzOi8vb3JjaWQub3JnLzAwMDAtMDAwMS03MjkxLTI0N1g=">
-<p><i class="fa-brands fa-orcid" aria-label="orcid"></i></p>
-</div>
-</div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">The Physiological Blueprint</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">The Physiological Blueprint</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">The Physiological Blueprint</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">The Physiological Blueprint</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">Modeling Biological Systems with Ordinary Differential Equations in R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">Modeling Biological Systems with Ordinary Differential Equations in R</span></p>
-</div>
+
+
 </section>
 
 </main> <!-- /main -->
-<script id = "quarto-html-after-body" type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -807,7 +985,7 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a  href="/dedication.html" class="pagination-link" aria-label="Dedication">
+      <a href="./dedication.html" class="pagination-link" aria-label="Dedication">
         <span class="nav-page-text">Dedication</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -816,41 +994,36 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      <div class='footer-contents'>Made by Matías Castillo-Aguilar with <i class='fa-solid fa-heart' style='color: #ff0000;'></i></div>  
-    </div>   
+<p>Made with <i class="fa-solid fa-heart" style="color: #ff0000;"></i> by Matías Castillo-Aguilar</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/matcasti">
-      <i 
-  class="bi bi-github" 
-  role="img" 
->
+      <i class="bi bi-github" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://bayesically-speaking.com/">
-      <i 
-  class="bi bi-globe" 
-  role="img" 
->
+      <i class="bi bi-globe" role="img">
 </i> 
     </a>
   </li>  
     <li class="nav-item">
     <a class="nav-link" href="https://orcid.org/0000-0001-7291-247X">
- 
-    </a>
+<p><i class="fa-brands fa-orcid" aria-label="orcid"></i></p>
+</a>
   </li>  
 </ul>
     </div>
   </div>
 </footer>
 
-</body>
 
-</html>
+
+
+</body></html>
