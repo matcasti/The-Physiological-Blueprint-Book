@@ -1,8 +1,3 @@
----
-title: "The Physiological Blueprint"
-subtitle: "Modeling Biological Systems with Ordinary Differential Equations in R"
----
-
 # Welcome {.unnumbered}
 
 To the dedicated kinesiologist, exercise physiologist, researcher, and student embarking on the fascinating journey of understanding the human body: Welcome.

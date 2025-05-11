@@ -2,7 +2,8 @@ project:
   type: book
 
 book:
-  title: "The Physiological Blueprint: Modeling Biological Systems with Ordinary Differential Equations in R"
+  title: "The Physiological Blueprint"
+  subtitle: "Modeling Biological Systems with Ordinary Differential Equations in R"
   search: true
   repo-url: https://github.com/matcasti/The-Physiological-Blueprint-Book
   repo-actions: [edit, issue]
