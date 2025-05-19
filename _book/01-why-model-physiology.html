@@ -562,6 +562,7 @@ window.Quarto = {
   <li><a href="#thinking-about-rates-of-change" id="toc-thinking-about-rates-of-change" class="nav-link" data-scroll-target="#thinking-about-rates-of-change"><span class="header-section-number">1.3.1</span> Thinking About Rates of Change</a></li>
   <li><a href="#differential-equations-connecting-state-to-rate-of-change" id="toc-differential-equations-connecting-state-to-rate-of-change" class="nav-link" data-scroll-target="#differential-equations-connecting-state-to-rate-of-change"><span class="header-section-number">1.3.2</span> Differential Equations: Connecting State to Rate of Change</a></li>
   <li><a href="#physiological-processes-as-interacting-rates" id="toc-physiological-processes-as-interacting-rates" class="nav-link" data-scroll-target="#physiological-processes-as-interacting-rates"><span class="header-section-number">1.3.3</span> Physiological Processes as Interacting Rates</a></li>
+  <li><a href="#why-is-this-a-natural-language" id="toc-why-is-this-a-natural-language" class="nav-link" data-scroll-target="#why-is-this-a-natural-language"><span class="header-section-number">1.3.4</span> Why is this a “Natural Language”?</a></li>
   </ul></li>
   <li><a href="#examples-of-classic-physiological-models" id="toc-examples-of-classic-physiological-models" class="nav-link" data-scroll-target="#examples-of-classic-physiological-models"><span class="header-section-number">1.4</span> Examples of Classic Physiological Models</a>
   <ul class="collapse">
@@ -640,7 +641,12 @@ window.Quarto = {
 <p>Each variable’s rate of change would be defined by equations based on your understanding of the physiology. For instance, the rate of change of heart rate might depend on the current levels of sympathetic and parasympathetic activity and circulating catecholamines, each weighted by parameters representing the sensitivity of the heart to these inputs. The rate of change of sympathetic or parasympathetic activity might depend on the exercise stimulus level, feedback from baroreceptors, or central command signals.</p>
 <p>Once built, this model isn’t just a static diagram; it’s a dynamic simulation. You can set initial conditions (e.g., resting heart rate, low autonomic activity) and then introduce an “exercise stimulus” that changes over time (e.g., increasing central command input, stimulating metaboreceptors). By solving the differential equations using a computational tool like R, you generate time-series data for all the variables in your model – simulated heart rate over time, simulated sympathetic activity over time, simulated parasympathetic activity over time, etc.</p>
 <p>You can then visualize these simulated outputs and compare them to your experimental data from exercising subjects. Does the simulated heart rate profile match the observed profile? If not, where do they diverge? This comparison isn’t just about validating the model; it’s about refining your <em>understanding</em> of the physiology. If your model predicts a much slower heart rate increase than observed, perhaps your equations don’t accurately capture the speed of vagal withdrawal or sympathetic activation. If the recovery is too slow, maybe the decay rates of autonomic signals in your model are incorrect.</p>
-<p>Furthermore, you could use this model to explore questions like: * How would training-induced changes in vagal tone affect the heart rate response to a specific exercise bout? You could change a parameter representing resting vagal activity in the model and re-run the simulation. * What is the relative contribution of vagal withdrawal versus sympathetic activation to the initial rapid increase in heart rate at exercise onset? You could selectively “block” one pathway in the model and see the resulting heart rate change. * How do different exercise intensities influence the dynamic balance between sympathetic and parasympathetic activity during steady-state exercise? You could run simulations with different levels of exercise stimulus input.</p>
+<p>Furthermore, you could use this model to explore questions like:</p>
+<ul>
+<li>How would training-induced changes in vagal tone affect the heart rate response to a specific exercise bout? You could change a parameter representing resting vagal activity in the model and re-run the simulation.</li>
+<li>What is the relative contribution of vagal withdrawal versus sympathetic activation to the initial rapid increase in heart rate at exercise onset? You could selectively “block” one pathway in the model and see the resulting heart rate change.</li>
+<li>How do different exercise intensities influence the dynamic balance between sympathetic and parasympathetic activity during steady-state exercise? You could run simulations with different levels of exercise stimulus input.</li>
+</ul>
 <p>These are precisely the kinds of mechanistic questions that modeling is designed to address, providing insights that complement and extend traditional experimental findings.</p>
 <p>Now, you might be thinking, “This sounds complicated. I’m a physiologist, not a mathematician or a programmer”. This is a common and understandable concern. However, the goal of this book is <em>not</em> to turn you into a theoretical mathematician or a computer science expert. The goal is to empower you to use mathematical modeling as a practical tool for physiological inquiry.</p>
 <p>The fundamental concepts of differential equations needed for modeling many physiological systems are surprisingly intuitive, focusing on rates of change and interactions. We will build these concepts step-by-step, always linking them back to the physiological phenomena you already understand.</p>
@@ -719,7 +725,12 @@ window.Quarto = {
 <p><span class="math display">\[
 \frac{dC}{dt} = -k \times C
 \]</span></p>
-<p>In this differential equation: * <span class="math inline">\(dC/dt\)</span> is the rate of change of concentration. * <span class="math inline">\(C\)</span> is the current concentration. * <span class="math inline">\(k\)</span> is a positive parameter, the rate constant, representing how quickly the clearance process occurs (e.g., related to kidney function or metabolic breakdown rate). The negative sign indicates that concentration is decreasing when <span class="math inline">\(C\)</span> is positive.</p>
+<p>In this differential equation:</p>
+<ul>
+<li><span class="math inline">\(dC/dt\)</span> is the rate of change of concentration.</li>
+<li><span class="math inline">\(C\)</span> is the current concentration.</li>
+<li><span class="math inline">\(k\)</span> is a positive parameter, the rate constant, representing how quickly the clearance process occurs (e.g., related to kidney function or metabolic breakdown rate). The negative sign indicates that concentration is decreasing when <span class="math inline">\(C\)</span> is positive.</li>
+</ul>
 <p>This single equation, <span class="math inline">\(\frac{dC}{dt} = -kC\)</span>, is a differential equation. It captures the rule governing how the concentration changes over time: the higher the current concentration, the faster it decreases.</p>
 <p>What does “solving” this differential equation mean? It means finding the function <span class="math inline">\(C(t)\)</span> – an equation that tells you the concentration of the substance <em>at any given time t</em>, given an initial concentration <span class="math inline">\(C_0\)</span> at time <span class="math inline">\(t=0\)</span>. For this specific simple equation, there’s an analytical solution you might recognize:</p>
 <p><span class="math display">\[
@@ -730,8 +741,17 @@ C(t) = C_0 e^{-kt}
 <section id="physiological-processes-as-interacting-rates" class="level3" data-number="1.3.3">
 <h3 data-number="1.3.3" class="anchored" data-anchor-id="physiological-processes-as-interacting-rates"><span class="header-section-number">1.3.3</span> Physiological Processes as Interacting Rates</h3>
 <p>Most physiological systems are far more complex than a single substance clearing from a compartment. They involve multiple variables interacting with each other. For example, heart rate is influenced by both sympathetic and parasympathetic nervous system activity. The rate at which heart rate changes depends on the current balance of these two inputs.</p>
-<p>Let’s think conceptually about a simplified model of heart rate regulation: * Let <span class="math inline">\(HR\)</span> be heart rate. * Let <span class="math inline">\(S\)</span> be the level of sympathetic influence. * Let <span class="math inline">\(P\)</span> be the level of parasympathetic influence.</p>
-<p>Our understanding of physiology tells us: * Sympathetic activity tends to <em>increase</em> heart rate. * Parasympathetic activity tends to <em>decrease</em> heart rate.</p>
+<p>Let’s think conceptually about a simplified model of heart rate regulation:</p>
+<ul>
+<li>Let <span class="math inline">\(HR\)</span> be heart rate.</li>
+<li>Let <span class="math inline">\(S\)</span> be the level of sympathetic influence.</li>
+<li>Let <span class="math inline">\(P\)</span> be the level of parasympathetic influence.</li>
+</ul>
+<p>Our understanding of physiology tells us:</p>
+<ul>
+<li>Sympathetic activity tends to <em>increase</em> heart rate.</li>
+<li>Parasympathetic activity tends to <em>decrease</em> heart rate.</li>
+</ul>
 <p>So, the <em>rate of change</em> of heart rate (<span class="math inline">\(dHR/dt\)</span>) depends on the current levels of <span class="math inline">\(S\)</span> and <span class="math inline">\(P\)</span>. A simplified differential equation for heart rate might look something like this:</p>
 <p><span class="math display">\[
 \frac{dHR}{dt} = (\text{Factors that increase HR rate}) - (\text{Factors that decrease HR rate})
@@ -741,12 +761,30 @@ C(t) = C_0 e^{-kt}
 \]</span></p>
 <p>Here, <span class="math inline">\(\text{sensitivity}_S\)</span> and <span class="math inline">\(\text{sensitivity}_P\)</span> would be parameters representing how strongly the heart rate responds to sympathetic and parasympathetic input, respectively. This equation says that the rate at which HR is changing <em>at any moment</em> depends on the <em>current</em> levels of sympathetic and parasympathetic drive at that same moment.</p>
 <p>But <span class="math inline">\(S\)</span> and <span class="math inline">\(P\)</span> themselves change over time, influenced by other factors like exercise intensity, blood pressure (via the baroreflex), or respiration. So, to create a more complete model, we also need differential equations describing how <span class="math inline">\(S\)</span> and <span class="math inline">\(P\)</span> change over time:</p>
-<p><span class="math display">\[\frac{dS}{dt} = \text{Rate of change of Sympathetic Activity}\]</span> <span class="math display">\[\frac{dP}{dt} = \text{Rate of change of Parasympathetic Activity}\]</span></p>
+<p><span class="math display">\[
+\frac{dS}{dt} = \text{Rate of change of Sympathetic Activity}
+\]</span></p>
+<p><span class="math display">\[
+\frac{dP}{dt} = \text{Rate of change of Parasympathetic Activity}
+\]</span></p>
 <p>The equations for <span class="math inline">\(dS/dt\)</span> and <span class="math inline">\(dP/dt\)</span> would depend on their own current values and the current values of other variables, like blood pressure or central command signals related to exercise. For example, <span class="math inline">\(dP/dt\)</span> might be negative (vagal activity decreasing) at exercise onset, and the <em>rate</em> of this decrease might depend on the intensity of the exercise stimulus.</p>
 <p>When we have multiple interacting variables, we end up with a <strong>system of differential equations</strong>. This system describes how all the key variables change <em>together</em> over time, based on their current states and interactions:</p>
-<p><span class="math display">\[\frac{dHR}{dt} = f_1(HR, S, P, \text{other variables}, \text{parameters})\]</span> <span class="math display">\[\frac{dS}{dt} = f_2(HR, S, P, \text{other variables}, \text{parameters})\]</span> <span class="math display">\[\frac{dP}{dt} = f_3(HR, S, P, \text{other variables}, \text{parameters})\]</span> <span class="math display">\[\vdots\]</span></p>
+<p><span class="math display">\[
+\frac{dHR}{dt} = f_1(HR, S, P, \text{other variables}, \text{parameters})
+\]</span></p>
+<p><span class="math display">\[
+\frac{dS}{dt} = f_2(HR, S, P, \text{other variables}, \text{parameters})
+\]</span></p>
+<p><span class="math display">\[
+\frac{dP}{dt} = f_3(HR, S, P, \text{other variables}, \text{parameters})
+\]</span></p>
+<p><span class="math display">\[
+\vdots
+\]</span></p>
 <p>This system of coupled differential equations is a mathematical blueprint for the dynamic behavior of the heart rate regulation system. It captures the essential physiological idea that the <em>rates</em> of change of these components are determined by the <em>current state</em> of the entire system.</p>
-<p><strong>Why is this a “Natural Language”?</strong></p>
+</section>
+<section id="why-is-this-a-natural-language" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="why-is-this-a-natural-language"><span class="header-section-number">1.3.4</span> Why is this a “Natural Language”?</h3>
 <p>The reason differential equations feel natural for physiology is that our intuitive understanding of biological mechanisms is often framed in terms of processes that drive change:</p>
 <ul>
 <li>Flows (blood, air, lymph) – these are rates of volume change over time.</li>
@@ -784,7 +822,19 @@ N(t) = N_0 e^{rt}
 \]</span></p>
 <p>where <span class="math inline">\(N_0\)</span> is the initial population size, <span class="math inline">\(r\)</span> is the growth rate, <span class="math inline">\(t\)</span> is time, and <span class="math inline">\(e\)</span> is the base of the natural logarithm (approx. 2.718).</p>
 <p>In a physiological context, this type of model can be a simplified representation of processes where the rate of increase is proportional to the current amount, such as the initial phase of tumor growth (before resource limitations), or the rapid proliferation of certain cell types in response to a strong stimulus (again, under ideal conditions).</p>
-<p><em>Insight:</em> This simple model captures the idea that a positive feedback loop (more individuals lead to a faster rate of increase in individuals) drives rapid, unchecked growth. While overly simplistic for most real physiological systems over long periods, it’s a fundamental pattern to recognize.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This simple model captures the idea that a positive feedback loop (more individuals lead to a faster rate of increase in individuals) drives rapid, unchecked growth. While overly simplistic for most real physiological systems over long periods, it’s a fundamental pattern to recognize.</p>
+</div>
+</div>
 </section>
 <section id="example-2-simple-drug-clearance-exponential-decay" class="level3" data-number="1.4.2">
 <h3 data-number="1.4.2" class="anchored" data-anchor-id="example-2-simple-drug-clearance-exponential-decay"><span class="header-section-number">1.4.2</span> Example 2: Simple Drug Clearance (Exponential Decay)</h3>
@@ -793,14 +843,31 @@ N(t) = N_0 e^{rt}
 <p><span class="math display">\[
 \frac{dC}{dt} = -kC
 \]</span></p>
-<p>Here: * <span class="math inline">\(dC/dt\)</span> is the rate of change of concentration over time. * <span class="math inline">\(C\)</span> is the current concentration. * <span class="math inline">\(k\)</span> is a positive parameter, the elimination rate constant, representing the efficiency of the clearance process. The negative sign is essential because <span class="math inline">\(C\)</span> is decreasing.</p>
+<p>Here:</p>
+<ul>
+<li><span class="math inline">\(dC/dt\)</span> is the rate of change of concentration over time.</li>
+<li><span class="math inline">\(C\)</span> is the current concentration.</li>
+<li><span class="math inline">\(k\)</span> is a positive parameter, the elimination rate constant, representing the efficiency of the clearance process. The negative sign is essential because <span class="math inline">\(C\)</span> is decreasing.</li>
+</ul>
 <p>This equation says: the rate at which the drug concentration decreases per unit of time is equal to a constant (<span class="math inline">\(k\)</span>) multiplied by the current concentration (<span class="math inline">\(C\)</span>).</p>
 <p>What behavior does this model predict? If you administer a dose of drug, resulting in an initial concentration <span class="math inline">\(C_0\)</span> at time <span class="math inline">\(t=0\)</span>, the initial clearance rate (<span class="math inline">\(-kC_0\)</span>) will be highest. As the concentration <span class="math inline">\(C\)</span> decreases, the clearance rate (<span class="math inline">\(dC/dt\)</span>) also decreases, meaning the concentration drops more slowly over time. This leads to a characteristic pattern of <strong>exponential decay</strong>. The solution to this differential equation is:</p>
 <p><span class="math display">\[
 C(t) = C_0 e^{-kt}
 \]</span></p>
 <p>This equation tells you the concentration of the drug at any time <span class="math inline">\(t\)</span> after administration.</p>
-<p><em>Insight:</em> This model is fundamental in pharmacokinetics and pharmacodynamics. It explains concepts like half-life (the time it takes for the concentration to drop by half), which is solely determined by the parameter <span class="math inline">\(k\)</span>. By measuring concentration at a few time points, you can estimate <span class="math inline">\(k\)</span> and predict future concentrations. It shows how a rate dependent on the current state leads to a curved response over time, not a straight line.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This model is fundamental in pharmacokinetics and pharmacodynamics. It explains concepts like half-life (the time it takes for the concentration to drop by half), which is solely determined by the parameter <span class="math inline">\(k\)</span>. By measuring concentration at a few time points, you can estimate <span class="math inline">\(k\)</span> and predict future concentrations. It shows how a rate dependent on the current state leads to a curved response over time, not a straight line.</p>
+</div>
+</div>
 </section>
 <section id="example-3-a-simple-two-compartment-model-substance-exchange" class="level3" data-number="1.4.3">
 <h3 data-number="1.4.3" class="anchored" data-anchor-id="example-3-a-simple-two-compartment-model-substance-exchange"><span class="header-section-number">1.4.3</span> Example 3: A Simple Two-Compartment Model (Substance Exchange)</h3>
@@ -823,7 +890,19 @@ C(t) = C_0 e^{-kt}
 </ul>
 <p>Notice that the rate of change in Compartment 2 (<span class="math inline">\(dC_2/dt\)</span>) depends on the concentration in Compartment 1 (<span class="math inline">\(C_1\)</span>). This is what we mean by <strong>coupled differential equations</strong> – the rate of change of one variable depends on the state of another variable in the system.</p>
 <p>What dynamics does this system predict? If you start with substance only in Compartment 1 (<span class="math inline">\(C_1 &gt; 0, C_2 = 0\)</span>), <span class="math inline">\(C_1\)</span> will decrease exponentially (as in the drug clearance example). Simultaneously, <span class="math inline">\(C_2\)</span> will increase at a rate that is initially high (when <span class="math inline">\(C_1\)</span> is high) and slows down as <span class="math inline">\(C_1\)</span> decreases. The substance moves from Compartment 1 to 2 until Compartment 1 is depleted. (A more complex model might include movement from 2 back to 1, leading towards equilibrium).</p>
-<p><em>Insight:</em> Systems of DEs are essential for modeling distribution, metabolism, and excretion (pharmacokinetics), as well as the movement of nutrients, gases (like oxygen and CO<span class="math inline">\(_2\)</span>), and signaling molecules between blood, tissues, and organs. This simple two-compartment model demonstrates how interactions between different parts of the system are represented and how solving the system shows the simultaneous dynamic changes in coupled variables.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Systems of DEs are essential for modeling distribution, metabolism, and excretion (pharmacokinetics), as well as the movement of nutrients, gases (like oxygen and CO<span class="math inline">\(_2\)</span>), and signaling molecules between blood, tissues, and organs. This simple two-compartment model demonstrates how interactions between different parts of the system are represented and how solving the system shows the simultaneous dynamic changes in coupled variables.</p>
+</div>
+</div>
 </section>
 <section id="example-4-simple-stimulus-response-first-order-kinetics" class="level3" data-number="1.4.4">
 <h3 data-number="1.4.4" class="anchored" data-anchor-id="example-4-simple-stimulus-response-first-order-kinetics"><span class="header-section-number">1.4.4</span> Example 4: Simple Stimulus-Response (First-Order Kinetics)</h3>
@@ -842,7 +921,19 @@ C(t) = C_0 e^{-kt}
 </ul>
 <p>This equation says: the rate at which <span class="math inline">\(Y\)</span> changes is large when <span class="math inline">\(Y\)</span> is far from <span class="math inline">\(Y_{target}\)</span> and gets smaller as <span class="math inline">\(Y\)</span> gets closer to <span class="math inline">\(Y_{target}\)</span>. If <span class="math inline">\(Y &lt; Y_{target}\)</span>, <span class="math inline">\(dY/dt\)</span> is positive, and <span class="math inline">\(Y\)</span> increases. If <span class="math inline">\(Y &gt; Y_{target}\)</span>, <span class="math inline">\(dY/dt\)</span> is negative, and <span class="math inline">\(Y\)</span> decreases.</p>
 <p>Consider the increase in <span class="math inline">\(\dot{V}\)</span>O<span class="math inline">\(_2\)</span> at the start of constant-load submaximal exercise. Initially, <span class="math inline">\(\dot{V}\)</span>O<span class="math inline">\(_2\)</span> is at rest (<span class="math inline">\(Y_0\)</span>). When exercise starts, the metabolic demand sets a new, higher <span class="math inline">\(Y_{target}\)</span>. The equation describes how <span class="math inline">\(\dot{V}\)</span>O<span class="math inline">\(_2\)</span> rises from <span class="math inline">\(Y_0\)</span> towards <span class="math inline">\(Y_{target}\)</span> exponentially. When exercise stops, <span class="math inline">\(Y_{target}\)</span> might drop back to the resting level, and the equation would then describe the exponential decay of <span class="math inline">\(\dot{V}\)</span>O<span class="math inline">\(_2\)</span> back to baseline.</p>
-<p><em>Insight:</em> This simple model captures the concept of a variable moving towards an equilibrium or steady state at a rate dependent on how far away it is. It’s used to model the kinetics of gas exchange, muscle oxygenation, heart rate adaptations to sudden load changes, and many other responses characterized by an exponential-like approach to a new level. The parameter <span class="math inline">\(k\)</span> is crucial as it determines the speed of the response, often represented by a time constant (<span class="math inline">\(\tau = 1/k\)</span>).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This simple model captures the concept of a variable moving towards an equilibrium or steady state at a rate dependent on how far away it is. It’s used to model the kinetics of gas exchange, muscle oxygenation, heart rate adaptations to sudden load changes, and many other responses characterized by an exponential-like approach to a new level. The parameter <span class="math inline">\(k\)</span> is crucial as it determines the speed of the response, often represented by a time constant (<span class="math inline">\(\tau = 1/k\)</span>).</p>
+</div>
+</div>
 </section>
 <section id="the-value-of-simple-models" class="level3" data-number="1.4.5">
 <h3 data-number="1.4.5" class="anchored" data-anchor-id="the-value-of-simple-models"><span class="header-section-number">1.4.5</span> The Value of Simple Models</h3>

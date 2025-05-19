@@ -49,6 +49,7 @@ Once built, this model isn't just a static diagram; it's a dynamic simulation. Y
 You can then visualize these simulated outputs and compare them to your experimental data from exercising subjects. Does the simulated heart rate profile match the observed profile? If not, where do they diverge? This comparison isn't just about validating the model; it's about refining your *understanding* of the physiology. If your model predicts a much slower heart rate increase than observed, perhaps your equations don't accurately capture the speed of vagal withdrawal or sympathetic activation. If the recovery is too slow, maybe the decay rates of autonomic signals in your model are incorrect.
 
 Furthermore, you could use this model to explore questions like:
+
 * How would training-induced changes in vagal tone affect the heart rate response to a specific exercise bout? You could change a parameter representing resting vagal activity in the model and re-run the simulation.
 * What is the relative contribution of vagal withdrawal versus sympathetic activation to the initial rapid increase in heart rate at exercise onset? You could selectively "block" one pathway in the model and see the resulting heart rate change.
 * How do different exercise intensities influence the dynamic balance between sympathetic and parasympathetic activity during steady-state exercise? You could run simulations with different levels of exercise stimulus input.
@@ -159,6 +160,7 @@ $$
 $$
 
 In this differential equation:
+
 * $dC/dt$ is the rate of change of concentration.
 * $C$ is the current concentration.
 * $k$ is a positive parameter, the rate constant, representing how quickly the clearance process occurs (e.g., related to kidney function or metabolic breakdown rate). The negative sign indicates that concentration is decreasing when $C$ is positive.
@@ -178,11 +180,13 @@ This equation tells us that the concentration decays exponentially over time, wh
 Most physiological systems are far more complex than a single substance clearing from a compartment. They involve multiple variables interacting with each other. For example, heart rate is influenced by both sympathetic and parasympathetic nervous system activity. The rate at which heart rate changes depends on the current balance of these two inputs.
 
 Let's think conceptually about a simplified model of heart rate regulation:
+
 * Let $HR$ be heart rate.
 * Let $S$ be the level of sympathetic influence.
 * Let $P$ be the level of parasympathetic influence.
 
 Our understanding of physiology tells us:
+
 * Sympathetic activity tends to *increase* heart rate.
 * Parasympathetic activity tends to *decrease* heart rate.
 
@@ -200,21 +204,37 @@ Here, $\text{sensitivity}_S$ and $\text{sensitivity}_P$ would be parameters repr
 
 But $S$ and $P$ themselves change over time, influenced by other factors like exercise intensity, blood pressure (via the baroreflex), or respiration. So, to create a more complete model, we also need differential equations describing how $S$ and $P$ change over time:
 
-$$\frac{dS}{dt} = \text{Rate of change of Sympathetic Activity}$$
-$$\frac{dP}{dt} = \text{Rate of change of Parasympathetic Activity}$$
+$$
+\frac{dS}{dt} = \text{Rate of change of Sympathetic Activity}
+$$
+
+$$
+\frac{dP}{dt} = \text{Rate of change of Parasympathetic Activity}
+$$
 
 The equations for $dS/dt$ and $dP/dt$ would depend on their own current values and the current values of other variables, like blood pressure or central command signals related to exercise. For example, $dP/dt$ might be negative (vagal activity decreasing) at exercise onset, and the *rate* of this decrease might depend on the intensity of the exercise stimulus.
 
 When we have multiple interacting variables, we end up with a **system of differential equations**. This system describes how all the key variables change *together* over time, based on their current states and interactions:
 
-$$\frac{dHR}{dt} = f_1(HR, S, P, \text{other variables}, \text{parameters})$$
-$$\frac{dS}{dt} = f_2(HR, S, P, \text{other variables}, \text{parameters})$$
-$$\frac{dP}{dt} = f_3(HR, S, P, \text{other variables}, \text{parameters})$$
-$$\vdots$$
+$$
+\frac{dHR}{dt} = f_1(HR, S, P, \text{other variables}, \text{parameters})
+$$
+
+$$
+\frac{dS}{dt} = f_2(HR, S, P, \text{other variables}, \text{parameters})
+$$
+
+$$
+\frac{dP}{dt} = f_3(HR, S, P, \text{other variables}, \text{parameters})
+$$
+
+$$
+\vdots
+$$
 
 This system of coupled differential equations is a mathematical blueprint for the dynamic behavior of the heart rate regulation system. It captures the essential physiological idea that the *rates* of change of these components are determined by the *current state* of the entire system.
 
-**Why is this a "Natural Language"?**
+### Why is this a "Natural Language"?
 
 The reason differential equations feel natural for physiology is that our intuitive understanding of biological mechanisms is often framed in terms of processes that drive change:
 
@@ -264,7 +284,11 @@ where $N_0$ is the initial population size, $r$ is the growth rate, $t$ is time,
 
 In a physiological context, this type of model can be a simplified representation of processes where the rate of increase is proportional to the current amount, such as the initial phase of tumor growth (before resource limitations), or the rapid proliferation of certain cell types in response to a strong stimulus (again, under ideal conditions).
 
-*Insight:* This simple model captures the idea that a positive feedback loop (more individuals lead to a faster rate of increase in individuals) drives rapid, unchecked growth. While overly simplistic for most real physiological systems over long periods, it's a fundamental pattern to recognize.
+::: {.callout-tip}
+## Insight 
+
+This simple model captures the idea that a positive feedback loop (more individuals lead to a faster rate of increase in individuals) drives rapid, unchecked growth. While overly simplistic for most real physiological systems over long periods, it's a fundamental pattern to recognize.
+:::
 
 ### Example 2: Simple Drug Clearance (Exponential Decay)
 
@@ -277,6 +301,7 @@ $$
 $$
 
 Here:
+
 * $dC/dt$ is the rate of change of concentration over time.
 * $C$ is the current concentration.
 * $k$ is a positive parameter, the elimination rate constant, representing the efficiency of the clearance process. The negative sign is essential because $C$ is decreasing.
@@ -291,7 +316,11 @@ $$
 
 This equation tells you the concentration of the drug at any time $t$ after administration.
 
-*Insight:* This model is fundamental in pharmacokinetics and pharmacodynamics. It explains concepts like half-life (the time it takes for the concentration to drop by half), which is solely determined by the parameter $k$. By measuring concentration at a few time points, you can estimate $k$ and predict future concentrations. It shows how a rate dependent on the current state leads to a curved response over time, not a straight line.
+::: {.callout-tip}
+## Insight
+
+This model is fundamental in pharmacokinetics and pharmacodynamics. It explains concepts like half-life (the time it takes for the concentration to drop by half), which is solely determined by the parameter $k$. By measuring concentration at a few time points, you can estimate $k$ and predict future concentrations. It shows how a rate dependent on the current state leads to a curved response over time, not a straight line.
+:::
 
 ### Example 3: A Simple Two-Compartment Model (Substance Exchange)
 
@@ -323,7 +352,11 @@ Notice that the rate of change in Compartment 2 ($dC_2/dt$) depends on the conce
 
 What dynamics does this system predict? If you start with substance only in Compartment 1 ($C_1 > 0, C_2 = 0$), $C_1$ will decrease exponentially (as in the drug clearance example). Simultaneously, $C_2$ will increase at a rate that is initially high (when $C_1$ is high) and slows down as $C_1$ decreases. The substance moves from Compartment 1 to 2 until Compartment 1 is depleted. (A more complex model might include movement from 2 back to 1, leading towards equilibrium).
 
-*Insight:* Systems of DEs are essential for modeling distribution, metabolism, and excretion (pharmacokinetics), as well as the movement of nutrients, gases (like oxygen and CO$_2$), and signaling molecules between blood, tissues, and organs. This simple two-compartment model demonstrates how interactions between different parts of the system are represented and how solving the system shows the simultaneous dynamic changes in coupled variables.
+::: {.callout-tip}
+## Insight
+
+Systems of DEs are essential for modeling distribution, metabolism, and excretion (pharmacokinetics), as well as the movement of nutrients, gases (like oxygen and CO$_2$), and signaling molecules between blood, tissues, and organs. This simple two-compartment model demonstrates how interactions between different parts of the system are represented and how solving the system shows the simultaneous dynamic changes in coupled variables.
+:::
 
 ### Example 4: Simple Stimulus-Response (First-Order Kinetics)
 
@@ -348,7 +381,11 @@ This equation says: the rate at which $Y$ changes is large when $Y$ is far from 
 
 Consider the increase in $\dot{V}$O$_2$ at the start of constant-load submaximal exercise. Initially, $\dot{V}$O$_2$ is at rest ($Y_0$). When exercise starts, the metabolic demand sets a new, higher $Y_{target}$. The equation describes how $\dot{V}$O$_2$ rises from $Y_0$ towards $Y_{target}$ exponentially. When exercise stops, $Y_{target}$ might drop back to the resting level, and the equation would then describe the exponential decay of $\dot{V}$O$_2$ back to baseline.
 
-*Insight:* This simple model captures the concept of a variable moving towards an equilibrium or steady state at a rate dependent on how far away it is. It's used to model the kinetics of gas exchange, muscle oxygenation, heart rate adaptations to sudden load changes, and many other responses characterized by an exponential-like approach to a new level. The parameter $k$ is crucial as it determines the speed of the response, often represented by a time constant ($\tau = 1/k$).
+::: {.callout-tip}
+## Insight
+
+This simple model captures the concept of a variable moving towards an equilibrium or steady state at a rate dependent on how far away it is. It's used to model the kinetics of gas exchange, muscle oxygenation, heart rate adaptations to sudden load changes, and many other responses characterized by an exponential-like approach to a new level. The parameter $k$ is crucial as it determines the speed of the response, often represented by a time constant ($\tau = 1/k$).
+:::
 
 ### The Value of Simple Models
 

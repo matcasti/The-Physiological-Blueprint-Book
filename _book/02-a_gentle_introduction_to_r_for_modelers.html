@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -76,6 +111,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -517,8 +581,62 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#setting-up-r-and-rstudio" id="toc-setting-up-r-and-rstudio" class="nav-link active" data-scroll-target="#setting-up-r-and-rstudio"><span class="header-section-number">2.1</span> Setting up R and RStudio</a>
+  <ul class="collapse">
+  <li><a href="#step-1-download-and-install-r" id="toc-step-1-download-and-install-r" class="nav-link" data-scroll-target="#step-1-download-and-install-r"><span class="header-section-number">2.1.1</span> Step 1: Download and Install R</a></li>
+  <li><a href="#step-2-download-and-install-rstudio-desktop" id="toc-step-2-download-and-install-rstudio-desktop" class="nav-link" data-scroll-target="#step-2-download-and-install-rstudio-desktop"><span class="header-section-number">2.1.2</span> Step 2: Download and Install RStudio Desktop</a></li>
+  <li><a href="#step-3-verify-installation" id="toc-step-3-verify-installation" class="nav-link" data-scroll-target="#step-3-verify-installation"><span class="header-section-number">2.1.3</span> Step 3: Verify Installation</a></li>
+  </ul></li>
+  <li><a href="#basic-r-syntax-data-types-and-operations" id="toc-basic-r-syntax-data-types-and-operations" class="nav-link" data-scroll-target="#basic-r-syntax-data-types-and-operations"><span class="header-section-number">2.2</span> Basic R syntax, data types, and operations</a>
+  <ul class="collapse">
+  <li><a href="#getting-around-rstudio" id="toc-getting-around-rstudio" class="nav-link" data-scroll-target="#getting-around-rstudio"><span class="header-section-number">2.2.1</span> Getting Around RStudio</a></li>
+  <li><a href="#r-as-a-calculator-basic-operations" id="toc-r-as-a-calculator-basic-operations" class="nav-link" data-scroll-target="#r-as-a-calculator-basic-operations"><span class="header-section-number">2.2.2</span> R as a Calculator: Basic Operations</a></li>
+  <li><a href="#variables-and-assignment-storing-information" id="toc-variables-and-assignment-storing-information" class="nav-link" data-scroll-target="#variables-and-assignment-storing-information"><span class="header-section-number">2.2.3</span> Variables and Assignment: Storing Information</a></li>
+  <li><a href="#data-types-what-kind-of-data-is-it" id="toc-data-types-what-kind-of-data-is-it" class="nav-link" data-scroll-target="#data-types-what-kind-of-data-is-it"><span class="header-section-number">2.2.4</span> Data Types: What Kind of Data is It?</a></li>
+  <li><a href="#using-built-in-r-functions" id="toc-using-built-in-r-functions" class="nav-link" data-scroll-target="#using-built-in-r-functions"><span class="header-section-number">2.2.5</span> Using Built-in R Functions</a></li>
+  <li><a href="#getting-help-in-r" id="toc-getting-help-in-r" class="nav-link" data-scroll-target="#getting-help-in-r"><span class="header-section-number">2.2.6</span> Getting Help in R</a></li>
+  <li><a href="#adding-comments-to-your-code" id="toc-adding-comments-to-your-code" class="nav-link" data-scroll-target="#adding-comments-to-your-code"><span class="header-section-number">2.2.7</span> Adding Comments to Your Code</a></li>
+  <li><a href="#using-the-script-editor" id="toc-using-the-script-editor" class="nav-link" data-scroll-target="#using-the-script-editor"><span class="header-section-number">2.2.8</span> Using the Script Editor</a></li>
+  <li><a href="#workspace-and-saving-your-work" id="toc-workspace-and-saving-your-work" class="nav-link" data-scroll-target="#workspace-and-saving-your-work"><span class="header-section-number">2.2.9</span> Workspace and Saving Your Work</a></li>
+  </ul></li>
+  <li><a href="#working-with-vectors-matrices-and-data-frames" id="toc-working-with-vectors-matrices-and-data-frames" class="nav-link" data-scroll-target="#working-with-vectors-matrices-and-data-frames"><span class="header-section-number">2.3</span> Working with vectors, matrices, and data frames</a>
+  <ul class="collapse">
+  <li><a href="#vectors-sequences-of-data-points" id="toc-vectors-sequences-of-data-points" class="nav-link" data-scroll-target="#vectors-sequences-of-data-points"><span class="header-section-number">2.3.1</span> Vectors: Sequences of Data Points</a></li>
+  <li><a href="#matrices-two-dimensional-arrays" id="toc-matrices-two-dimensional-arrays" class="nav-link" data-scroll-target="#matrices-two-dimensional-arrays"><span class="header-section-number">2.3.2</span> Matrices: Two-Dimensional Arrays</a></li>
+  <li><a href="#data-frames-the-workhorse-for-tabular-data" id="toc-data-frames-the-workhorse-for-tabular-data" class="nav-link" data-scroll-target="#data-frames-the-workhorse-for-tabular-data"><span class="header-section-number">2.3.3</span> Data Frames: The Workhorse for Tabular Data</a></li>
+  </ul></li>
+  <li><a href="#importing-and-exporting-data" id="toc-importing-and-exporting-data" class="nav-link" data-scroll-target="#importing-and-exporting-data"><span class="header-section-number">2.4</span> Importing and exporting data</a>
+  <ul class="collapse">
+  <li><a href="#setting-your-working-directory" id="toc-setting-your-working-directory" class="nav-link" data-scroll-target="#setting-your-working-directory"><span class="header-section-number">2.4.1</span> Setting Your Working Directory</a></li>
+  <li><a href="#importing-data-from-text-files-csv-and-tab-delimited" id="toc-importing-data-from-text-files-csv-and-tab-delimited" class="nav-link" data-scroll-target="#importing-data-from-text-files-csv-and-tab-delimited"><span class="header-section-number">2.4.2</span> Importing Data from Text Files (CSV and Tab-delimited)</a></li>
+  <li><a href="#exporting-data-from-r" id="toc-exporting-data-from-r" class="nav-link" data-scroll-target="#exporting-data-from-r"><span class="header-section-number">2.4.3</span> Exporting Data from R</a></li>
+  </ul></li>
+  <li><a href="#basic-plotting-in-r" id="toc-basic-plotting-in-r" class="nav-link" data-scroll-target="#basic-plotting-in-r"><span class="header-section-number">2.5</span> Basic plotting in R</a>
+  <ul class="collapse">
+  <li><a href="#a-glimpse-of-base-r-plotting" id="toc-a-glimpse-of-base-r-plotting" class="nav-link" data-scroll-target="#a-glimpse-of-base-r-plotting"><span class="header-section-number">2.5.1</span> A Glimpse of Base R Plotting</a></li>
+  <li><a href="#introducing-ggplot2-building-plots-layer-by-layer" id="toc-introducing-ggplot2-building-plots-layer-by-layer" class="nav-link" data-scroll-target="#introducing-ggplot2-building-plots-layer-by-layer"><span class="header-section-number">2.5.2</span> Introducing <code>ggplot2</code>: Building Plots Layer by Layer</a></li>
+  <li><a href="#customizing-your-ggplot2-plots" id="toc-customizing-your-ggplot2-plots" class="nav-link" data-scroll-target="#customizing-your-ggplot2-plots"><span class="header-section-number">2.5.3</span> Customizing Your <code>ggplot2</code> Plots**</a></li>
+  </ul></li>
+  <li><a href="#writing-simple-r-functions" id="toc-writing-simple-r-functions" class="nav-link" data-scroll-target="#writing-simple-r-functions"><span class="header-section-number">2.6</span> Writing simple R functions</a>
+  <ul class="collapse">
+  <li><a href="#why-write-your-own-functions" id="toc-why-write-your-own-functions" class="nav-link" data-scroll-target="#why-write-your-own-functions"><span class="header-section-number">2.6.1</span> Why Write Your Own Functions?</a></li>
+  <li><a href="#how-to-define-a-simple-r-function" id="toc-how-to-define-a-simple-r-function" class="nav-link" data-scroll-target="#how-to-define-a-simple-r-function"><span class="header-section-number">2.6.2</span> How to Define a Simple R Function</a></li>
+  <li><a href="#functions-for-modeling-calculating-rates-of-change" id="toc-functions-for-modeling-calculating-rates-of-change" class="nav-link" data-scroll-target="#functions-for-modeling-calculating-rates-of-change"><span class="header-section-number">2.6.3</span> Functions for Modeling: Calculating Rates of Change</a></li>
+  </ul></li>
+  <li><a href="#introduction-to-r-packages-relevant-for-modeling" id="toc-introduction-to-r-packages-relevant-for-modeling" class="nav-link" data-scroll-target="#introduction-to-r-packages-relevant-for-modeling"><span class="header-section-number">2.7</span> Introduction to R packages relevant for modeling</a>
+  <ul class="collapse">
+  <li><a href="#what-are-r-packages-and-why-use-them" id="toc-what-are-r-packages-and-why-use-them" class="nav-link" data-scroll-target="#what-are-r-packages-and-why-use-them"><span class="header-section-number">2.7.1</span> What are R Packages and Why Use Them?</a></li>
+  <li><a href="#installing-and-loading-packages" id="toc-installing-and-loading-packages" class="nav-link" data-scroll-target="#installing-and-loading-packages"><span class="header-section-number">2.7.2</span> Installing and Loading Packages</a></li>
+  <li><a href="#getting-help-for-packages" id="toc-getting-help-for-packages" class="nav-link" data-scroll-target="#getting-help-for-packages"><span class="header-section-number">2.7.3</span> Getting Help for Packages</a></li>
+  <li><a href="#key-packages-for-physiological-modeling-in-this-book" id="toc-key-packages-for-physiological-modeling-in-this-book" class="nav-link" data-scroll-target="#key-packages-for-physiological-modeling-in-this-book"><span class="header-section-number">2.7.4</span> Key Packages for Physiological Modeling in this Book</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/edit/main/02-a_gentle_introduction_to_r_for_modelers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -543,8 +661,1253 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="setting-up-r-and-rstudio" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="setting-up-r-and-rstudio"><span class="header-section-number">2.1</span> Setting up R and RStudio</h2>
+<p>Welcome to Chapter 2! In Chapter 1, we made the case for using mathematical modeling, particularly with differential equations, to understand the dynamic complexities of physiological systems. We highlighted that to actually implement, solve, and visualize these models, computational tools are essential. For this book, our tool of choice is the R programming environment, coupled with the user-friendly RStudio interface.</p>
+<p>This chapter will provide you with a gentle introduction to the R skills you’ll need for modeling. We won’t aim to make you a master programmer, but rather to equip you with the fundamental knowledge and practical R commands necessary to follow along with the modeling examples throughout the rest of the book. We start here with getting the software set up on your computer.</p>
+<p>You will need two main software components:</p>
+<ol type="1">
+<li><strong>R:</strong> This is the statistical programming language itself – the engine that performs calculations, runs simulations, and executes commands.</li>
+<li><strong>RStudio:</strong> This is a powerful and user-friendly Integrated Development Environment (IDE) for R. Think of R as the car’s engine and RStudio as the dashboard, steering wheel, and comfortable seats. While you <em>can</em> interact directly with the R engine using a basic console, RStudio makes coding, managing files, viewing plots, and accessing help much, much easier. It’s highly recommended to use RStudio when working with R.</li>
+</ol>
+<p>Both R and RStudio are free and open-source, available for Windows, macOS, and Linux operating systems.</p>
+<section id="step-1-download-and-install-r" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="step-1-download-and-install-r"><span class="header-section-number">2.1.1</span> Step 1: Download and Install R</h3>
+<p>First, you need to install the R programming language.</p>
+<ol type="1">
+<li>Go to the Comprehensive R Archive Network (CRAN) website. You can find it by searching for “CRAN R” or by navigating directly to [Insert CRAN URL here, e.g., <a href="https://cran.r-project.org/">https://cran.r-project.org/</a>].</li>
+<li>On the CRAN website, find the download link appropriate for your operating system (Linux, macOS, or Windows).</li>
+<li>Follow the instructions for your specific OS to download the latest version of R.</li>
+<li>Once the download is complete, run the installer file. For most users, accepting the default installation options is recommended. Choose the installation directory, components, and startup options that are pre-selected unless you have a specific reason to change them.</li>
+</ol>
+</section>
+<section id="step-2-download-and-install-rstudio-desktop" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="step-2-download-and-install-rstudio-desktop"><span class="header-section-number">2.1.2</span> Step 2: Download and Install RStudio Desktop</h3>
+<p>Next, download and install RStudio.</p>
+<ol type="1">
+<li>Go to the Posit website (Posit is the company that develops RStudio, formerly known as RStudio, PBC). You can find the download page by searching for “Download RStudio Desktop” or by navigating to [Insert Posit RStudio download URL here, e.g., <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a>].</li>
+<li>On the download page, locate the section for “RStudio Desktop”. Choose the FREE version – this version has all the capabilities you will need for this book.</li>
+<li>Select the download link that matches your operating system.</li>
+<li>Once the download is complete, run the installer file. Again, accepting the default installation options is typically the best approach unless you have specific IT requirements.</li>
+</ol>
+</section>
+<section id="step-3-verify-installation" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="step-3-verify-installation"><span class="header-section-number">2.1.3</span> Step 3: Verify Installation</h3>
+<p>After installing both R and RStudio, open RStudio. You should be able to find it in your applications or programs menu just like any other software.</p>
+<p>When RStudio opens, it should automatically detect the R installation on your system. You’ll typically see several panes (windows) within the RStudio interface, including a Console pane where you can type R commands. If RStudio launches without errors, congratulations! You have successfully set up your modeling environment.</p>
+<p>While installation is usually a straightforward process, computer configurations can vary. If you encounter issues during installation, consult the official R and RStudio installation guides online, or refer to Appendix A (if included) which might cover common troubleshooting steps.</p>
+<p>With R and RStudio successfully installed, you have the essential computational tools ready. You are now prepared to begin exploring the basics of the R language and how we will use it as our workbench to build, solve, and visualize physiological models.</p>
+</section>
+</section>
+<section id="basic-r-syntax-data-types-and-operations" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="basic-r-syntax-data-types-and-operations"><span class="header-section-number">2.2</span> Basic R syntax, data types, and operations</h2>
+<p>With R and RStudio successfully installed, you now have the essential tools to begin your journey into physiological modeling. Think of RStudio as your laboratory workbench – it’s where you will write the instructions for your models, perform simulations, analyze results, and create visualizations.</p>
+<p>This chapter is designed to give you just enough familiarity with R’s fundamental building blocks to get started. We will focus only on the concepts and syntax that are directly relevant to defining, solving, and interacting with differential equation models later in the book. Don’t feel the need to become an R expert overnight; our aim is practical application for modeling physiological dynamics.</p>
+<p>Let’s begin by getting acquainted with the RStudio interface and some very basic operations.</p>
+<section id="getting-around-rstudio" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="getting-around-rstudio"><span class="header-section-number">2.2.1</span> Getting Around RStudio</h3>
+<p>When you open RStudio, you will typically see several panes. While the exact layout can be customized, the default setup usually includes:</p>
+<ol type="1">
+<li><strong>Source Editor (Top-Left):</strong> This is where you’ll write your R scripts (<code>.R</code> files). Writing code in a script is crucial because it allows you to save your work, easily edit it, and run lines of code repeatedly. This is where you’ll define your differential equations as R functions.</li>
+<li><strong>Console (Bottom-Left):</strong> This pane is where R commands are executed. You can type commands directly here and press Enter to run them. R’s output (results, messages, warnings, errors) will appear here. When you run code from your script in the Source Editor, it gets sent to the Console to be executed.</li>
+<li><strong>Environment/History (Top-Right):</strong> The Environment tab shows you all the objects (variables, data, functions) that you currently have loaded in R’s memory. This is useful for keeping track of your model parameters and simulation results. The History tab shows you previous commands you’ve run in the Console.</li>
+<li><strong>Files/Plots/Packages/Help/Viewer (Bottom-Right):</strong> This pane is multi-functional.
+<ul>
+<li><strong>Files:</strong> Navigate your computer’s file system. Useful for opening scripts or finding data files.</li>
+<li><strong>Plots:</strong> This is where visualizations (graphs) generated by your R code will appear. A critical pane for visualizing model outputs!</li>
+<li><strong>Packages:</strong> Lists installed R packages and allows you to load or unload them. We’ll use this to ensure <code>deSolve</code> and <code>ggplot2</code> are ready.</li>
+<li><strong>Help:</strong> Search for and view documentation for R functions and packages. Invaluable when you forget how a function works.</li>
+<li><strong>Viewer:</strong> Can display local web content, sometimes used for interactive visualizations.</li>
+</ul></li>
+</ol>
+<p>Get comfortable identifying these panes. You’ll primarily work by writing code in the Source Editor and running it in the Console, keeping an eye on your variables in the Environment and your plots in the Plots pane.</p>
+</section>
+<section id="r-as-a-calculator-basic-operations" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="r-as-a-calculator-basic-operations"><span class="header-section-number">2.2.2</span> R as a Calculator: Basic Operations</h3>
+<p>At its most fundamental level, R can be used like a sophisticated calculator. You can type mathematical expressions directly into the Console and press Enter to see the result.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span> <span class="sc">*</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 65</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">100</span> <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">+</span> (<span class="dv">15</span> <span class="sc">*</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50</code></pre>
+</div>
+</div>
+<p>R understands the standard order of operations (parentheses/brackets, exponents, multiplication/division, addition/subtraction – PEMDAS/BODMAS). You can use parentheses to ensure calculations are performed in the order you intend.</p>
+<p>Basic arithmetic operators:</p>
+<ul>
+<li><code>+</code> Addition</li>
+<li><code>-</code> Subtraction</li>
+<li><code>*</code> Multiplication</li>
+<li><code>/</code> Division</li>
+<li><code>^</code> or <code>**</code> Exponentiation (e.g., <code>2^3</code> is 2 cubed)</li>
+</ul>
+</section>
+<section id="variables-and-assignment-storing-information" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="variables-and-assignment-storing-information"><span class="header-section-number">2.2.3</span> Variables and Assignment: Storing Information</h3>
+<p>In modeling, we need to store values like physiological parameters (e.g., clearance rate, sensitivity), initial conditions (e.g., starting drug concentration, initial heart rate), and eventually, the results of our simulations. We do this using variables, also called <strong>objects</strong> in R.</p>
+<p>You assign a value to a variable using the assignment operator, which is typically <code>&lt;-</code> (a less-than sign followed by a hyphen). You can also use <code>=</code>, but <code>&lt;-</code> is considered the standard and often preferred style in R programming.</p>
+<p>Let’s create a variable to store a resting heart rate value:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>resting_HR <span class="ot">&lt;-</span> <span class="dv">65</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When you run this line in the Console (or run it from a script), you won’t see output in the Console, but you <em>will</em> see <code>resting_HR</code> appear in your Environment pane with the value 65.</p>
+<p>Now you can use this variable in calculations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>max_HR <span class="ot">&lt;-</span> <span class="dv">220</span> <span class="sc">-</span> <span class="dv">40</span> <span class="co"># Let's assume age 40</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>HR_range <span class="ot">&lt;-</span> max_HR <span class="sc">-</span> resting_HR</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(HR_range)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 115</code></pre>
+</div>
+</div>
+<p>You can also assign the result of a calculation to a variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>BMI <span class="ot">&lt;-</span> <span class="dv">75</span> <span class="sc">/</span> (<span class="fl">1.80</span><span class="sc">^</span><span class="dv">2</span>) <span class="co"># Mass (kg) / Height (m)^2</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(BMI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.14815</code></pre>
+</div>
+</div>
+<p>Variable names in R can contain letters, numbers, underscores (<code>_</code>), and periods (<code>.</code>). They cannot start with a number or underscore. R is also <strong>case-sensitive</strong>, meaning <code>resting_HR</code>, <code>Resting_HR</code>, and <code>resting_hr</code> would be treated as three different variables. Choose names that are descriptive and easy to read.</p>
+<p><strong>R Tip:</strong> Use descriptive variable names! <code>clearance_rate</code> is much better than <code>k</code>, especially in complex models.</p>
+</section>
+<section id="data-types-what-kind-of-data-is-it" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="data-types-what-kind-of-data-is-it"><span class="header-section-number">2.2.4</span> Data Types: What Kind of Data is It?</h3>
+<p>Every piece of data in R has a <strong>data type</strong> or <strong>class</strong>. R handles many types automatically, but being aware of the basic ones is helpful. For physiological modeling, the most important type is <strong>numeric</strong>.</p>
+<ol type="1">
+<li><strong>Numeric</strong>. This is the default type for numbers in R. It includes real numbers (with decimal places, often called ‘double’ or ‘float’ in other languages) and integers (whole numbers). R treats most numbers you enter as numeric. Parameters and state variables in our models will almost always be numeric.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>heart_rate <span class="ot">&lt;-</span> <span class="fl">72.5</span> <span class="co"># Numeric (double)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">30</span>         <span class="co"># Numeric (integer, but often treated as double)</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>rate_constant <span class="ot">&lt;-</span> <span class="fl">0.15</span> <span class="co"># Numeric (double)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li><strong>Character</strong>. Used for text or strings. You enclose character data in quotes (<code>"</code> or <code>'</code>). Useful for labels, names, or text output.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>subject_id <span class="ot">&lt;-</span> <span class="st">"Subject_001"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>measurement_unit <span class="ot">&lt;-</span> <span class="st">"bpm"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li><strong>Logical</strong>. Represents Boolean values, <code>TRUE</code> or <code>FALSE</code>. Results from logical comparisons (e.g., <code>5 &gt; 3</code> is <code>TRUE</code>). Less common in basic ODE definition but fundamental for control flow in programming.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>is_exercising <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>is_resting <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can check the class of an object using the <code>class()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(heart_rate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(subject_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<p>For our physiological modeling, you will primarily work with <code>numeric</code> data types for your state variables, parameters, initial conditions, and time points.</p>
+</section>
+<section id="using-built-in-r-functions" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="using-built-in-r-functions"><span class="header-section-number">2.2.5</span> Using Built-in R Functions</h3>
+<p>R comes with a vast library of built-in functions to perform operations. You’ve already seen <code>class()</code>. Functions take inputs (arguments) inside parentheses <code>()</code> and perform an action or calculation, returning an output.</p>
+<p>Many mathematical functions are readily available and will be useful when defining the rate functions for your differential equations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">81</span>) <span class="co"># Square root</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="dv">1</span>)   <span class="co"># The exponential function e^x (e to the power of 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.718282</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)  <span class="co"># Natural logarithm (base e)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.302585</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">100</span>) <span class="co"># Logarithm base 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sin</span>(pi <span class="sc">/</span> <span class="dv">2</span>) <span class="co"># Sine function (input in radians)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>You can use variables within functions, and functions within calculations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>initial_concentration <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>decay_rate <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>time_point <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Concentration after 10 time units using the exponential decay formula</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>predicted_concentration <span class="ot">&lt;-</span> initial_concentration <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>decay_rate <span class="sc">*</span> time_point)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(predicted_concentration)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 60.65307</code></pre>
+</div>
+</div>
+<p>This simple example shows how R handles the exact solution of a simple exponential decay model, even before we get to solving differential equations numerically.</p>
+<p>Functions can take multiple arguments, separated by commas. For example, <code>round()</code> takes a number and the number of decimal places to round to:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(BMI, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.15</code></pre>
+</div>
+</div>
+</section>
+<section id="getting-help-in-r" class="level3" data-number="2.2.6">
+<h3 data-number="2.2.6" class="anchored" data-anchor-id="getting-help-in-r"><span class="header-section-number">2.2.6</span> Getting Help in R</h3>
+<p>One of the most important R skills is knowing how to get help. If you know the name of a function but aren’t sure how to use it or what its arguments are, type a question mark followed by the function name in the Console and press Enter:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>?exp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will open the help page for the <code>exp()</code> function in the Help pane (bottom-right). Help pages might look technical at first, but they contain essential information about a function’s description, usage (how to call it, its arguments), details, and examples.</p>
+</section>
+<section id="adding-comments-to-your-code" class="level3" data-number="2.2.7">
+<h3 data-number="2.2.7" class="anchored" data-anchor-id="adding-comments-to-your-code"><span class="header-section-number">2.2.7</span> Adding Comments to Your Code</h3>
+<p>As your R code grows, it’s crucial to add comments to explain what you’re doing. This makes your code readable for yourself later and for anyone else who might need to understand your physiological model code. In R, anything on a line after a <code>#</code> symbol is treated as a comment and ignored by R when executing the code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This line calculates the maximum heart rate based on age</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>max_HR <span class="ot">&lt;-</span> <span class="dv">220</span> <span class="sc">-</span> <span class="dv">40</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's define some parameters for a simple model</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>clearance_k <span class="ot">&lt;-</span> <span class="fl">0.1</span>  <span class="co"># Clearance rate constant (units: 1/time)</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>initial_C <span class="ot">&lt;-</span> <span class="dv">50</span>     <span class="co"># Initial concentration (units: mass/volume)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insight
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use comments generously when building your models to explain the physiological meaning of different parts of your code, parameters, and equations.</p>
+</div>
+</div>
+</section>
+<section id="using-the-script-editor" class="level3" data-number="2.2.8">
+<h3 data-number="2.2.8" class="anchored" data-anchor-id="using-the-script-editor"><span class="header-section-number">2.2.8</span> Using the Script Editor</h3>
+<p>While the Console is great for quick calculations or trying out single commands, you should write the code for your models, simulations, and plots in the <strong>Source Editor</strong> (top-left pane). This allows you to save your work as an R script file (with a <code>.R</code> extension).</p>
+<p>To create a new R script, go to <code>File &gt; New File &gt; R Script</code>. You can type multiple lines of code in this editor. To run a specific line or a block of lines from the script, place your cursor on the line or select the block and press <code>Ctrl + Enter</code> (on Windows/Linux) or <code>Cmd + Enter</code> (on macOS). The code will be sent to the Console and executed.</p>
+<p>Saving your script (<code>File &gt; Save As...</code>) means you don’t lose your work and can easily re-run your entire model or simulation later.</p>
+</section>
+<section id="workspace-and-saving-your-work" class="level3" data-number="2.2.9">
+<h3 data-number="2.2.9" class="anchored" data-anchor-id="workspace-and-saving-your-work"><span class="header-section-number">2.2.9</span> Workspace and Saving Your Work</h3>
+<p>The Environment pane (top-right) shows you the R “workspace” – all the objects (variables, functions) currently loaded in your session. When you close RStudio, it might ask if you want to save your workspace. Saving the workspace (<code>.RData</code> file) saves all the objects in your Environment, so they are there when you open RStudio again in that project directory. However, it is generally better practice for reproducibility to save your <em>scripts</em> (<code>.R</code> files) and ensure that running the script from beginning to end recreates all necessary objects. This way, you have a clear record of how your data and variables were created.</p>
+<p><strong>Try It Yourself:</strong></p>
+<ol type="1">
+<li>Open a new R script in RStudio (<code>File &gt; New File &gt; R Script</code>).</li>
+<li>In the script, define variables for body mass (kg) and height (m).</li>
+<li>Calculate BMI using these variables and assign it to a <code>bmi_value</code> variable.</li>
+<li>Add comments to your code explaining each step.</li>
+<li>Run each line of your script using <code>Ctrl + Enter</code> (or <code>Cmd + Enter</code>). Observe the variables appearing in your Environment pane.</li>
+<li>Use the <code>round()</code> function to round your <code>bmi_value</code> to one decimal place.</li>
+<li>Use <code>?round</code> in the Console to open the help page for the <code>round()</code> function.</li>
+<li>Save your script (<code>File &gt; Save As...</code>).</li>
+</ol>
+<p>In this section, you’ve taken your first steps with R. You’ve learned how to use RStudio, perform basic arithmetic, store values in variables (objects) of different data types (focusing on <code>numeric</code>), use built-in functions, get help, and write code in a script file. These are the fundamental building blocks. Don’t worry if it feels basic right now. As we progress, you will use these exact skills, combined with R’s powerful packages, to define and work with your physiological differential equation models. In the next section, we’ll introduce how R handles collections of data, which is essential for working with multiple state variables and simulation outputs.</p>
+</section>
+</section>
+<section id="working-with-vectors-matrices-and-data-frames" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="working-with-vectors-matrices-and-data-frames"><span class="header-section-number">2.3</span> Working with vectors, matrices, and data frames</h2>
+<p>In the previous section, we learned how to use R as a calculator and store single values in variables. However, physiological data and the output from our dynamic models are rarely single numbers. We work with sequences of measurements over time, data collected from multiple subjects, or the simultaneous values of several physiological variables. To handle this, R provides powerful structures for organizing collections of data: <strong>vectors</strong>, <strong>matrices</strong>, and <strong>data frames</strong>. Understanding these is fundamental to working with physiological data and interpreting model outputs in R.</p>
+<p>Think of these structures as different ways to organize numbers (and other data types) in a table or list, each suited for slightly different purposes.</p>
+<section id="vectors-sequences-of-data-points" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="vectors-sequences-of-data-points"><span class="header-section-number">2.3.1</span> Vectors: Sequences of Data Points</h3>
+<p>The most basic R data structure is a <strong>vector</strong>. A vector is simply a sequence of elements of the <em>same</em> data type (usually numbers for our purposes). You can think of it as a single row or a single column of numbers.</p>
+<p>Physiologically, a vector is a natural way to represent:</p>
+<ul>
+<li>A series of heart rate measurements taken every minute during an exercise test.</li>
+<li>A set of parameter values for a model (e.g., rate constants for drug clearance, sensitivity values for autonomic control).</li>
+<li>A list of subject IDs or group assignments.</li>
+</ul>
+<p>You create a vector using the <code>c()</code> function (which stands for “combine” or “concatenate”). You place the elements you want in the vector inside the parentheses, separated by commas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of heart rate measurements (beats per minute) at different time points</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>heart_rates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">95</span>, <span class="dv">120</span>, <span class="dv">145</span>, <span class="dv">150</span>, <span class="dv">152</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of corresponding time points (in minutes)</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>time_points_min <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of model parameters (e.g., for a simple physiological model)</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>model_params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">1.2</span>, <span class="dv">70</span>) <span class="co"># clearance_rate, volume, baseline_value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When you print a vector by typing its name in the console, R shows its contents:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>heart_rates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  60  72  95 120 145 150 152</code></pre>
+</div>
+</div>
+<p>The <code>[1]</code> indicates that the first element shown is the first element of the vector. If a vector is very long, R will print it across multiple lines and indicate the index of the first element on each line.</p>
+<p>You can get basic information about a vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(heart_rates) <span class="co"># How many elements are in the vector?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(heart_rates) <span class="co"># What type of data is stored in the vector?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+<p><strong>Accessing Elements in a Vector</strong></p>
+<p>You can access individual elements or subsets of elements in a vector using square brackets <code>[]</code> after the vector name. The numbers inside the brackets are the <strong>indices</strong> (positions) of the elements you want, starting with 1 for the first element.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>heart_rates[<span class="dv">1</span>] <span class="co"># Access the first element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 60</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>heart_rates[<span class="dv">4</span>] <span class="co"># Access the fourth element (120 bpm)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 120</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>heart_rates[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">7</span>)] <span class="co"># Access multiple elements using a vector of indices</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  60  95 152</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>heart_rates[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>] <span class="co"># Access a range of elements using the colon operator (:)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  72  95 120 145</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>heart_rates[<span class="sc">-</span><span class="dv">1</span>] <span class="co"># Access all elements EXCEPT the first one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  72  95 120 145 150 152</code></pre>
+</div>
+</div>
+<p><strong>Try It Yourself:</strong></p>
+<p>Create a vector called <code>body_weights_kg</code> with the weights of 5 subjects: 70.5, 65.2, 80.1, 72.9, 68.0.</p>
+<ol type="1">
+<li>How many subjects are in this vector?</li>
+<li>What is the weight of the 3rd subject?</li>
+<li>Get the weights of the 1st, 2nd, and 5th subjects.</li>
+</ol>
+<p><strong>Vector Operations</strong></p>
+<p>One of the most powerful features of vectors in R is that arithmetic operations typically work <strong>element-wise</strong>. This means you can perform calculations on every element of a vector simultaneously without writing a loop.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert heart rates from bpm to beats per second</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>heart_rates_bps <span class="ot">&lt;-</span> heart_rates <span class="sc">/</span> <span class="dv">60</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(heart_rates_bps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.000000 1.200000 1.583333 2.000000 2.416667 2.500000 2.533333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a constant value to all elements (e.g., simulating a measurement offset)</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>heart_rates_offset <span class="ot">&lt;-</span> heart_rates <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(heart_rates_offset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  65  77 100 125 150 155 157</code></pre>
+</div>
+</div>
+<p>If you perform an operation on two vectors of the <em>same length</em>, the operation is applied between corresponding elements:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's say we measured change in blood pressure (mmHg) at the same time points</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>delta_bp_mmhg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">20</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate a simple physiological stress index (just for illustration)</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Maybe stress_index = HR * delta_BP</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>stress_index <span class="ot">&lt;-</span> heart_rates <span class="sc">*</span> delta_bp_mmhg</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(stress_index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]    0  360  950 1800 2900 3300 3040</code></pre>
+</div>
+</div>
+<p>You can also use many built-in functions on vectors, which often return a single value summarizing the vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(heart_rates) <span class="co"># Calculate the average heart rate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 113.4286</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(delta_bp_mmhg) <span class="co"># Calculate the total change in BP (not physiologically meaningful here, just an example)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 92</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(heart_rates) <span class="co"># Find the maximum heart rate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 152</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(heart_rates) <span class="co"># Find the minimum heart rate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 60</code></pre>
+</div>
+</div>
+<p>Vectors are fundamental for storing lists of numbers or single physiological variables over time or across subjects. In modeling, they are also commonly used to define the <strong>initial conditions</strong> of your model variables and to store <strong>model parameters</strong>.</p>
+</section>
+<section id="matrices-two-dimensional-arrays" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="matrices-two-dimensional-arrays"><span class="header-section-number">2.3.2</span> Matrices: Two-Dimensional Arrays</h3>
+<p>A <strong>matrix</strong> is a two-dimensional collection of elements, arranged in rows and columns, where <em>all</em> elements must be of the <em>same</em> data type. You can think of it as a rectangular table of numbers.</p>
+<p>Matrices are useful in R for representing certain mathematical structures (like transformation matrices, if you were doing more complex linear algebra) or sometimes for organizing parameter sets for multiple model runs. However, for typical physiological data management, <strong>data frames</strong> (discussed next) are usually more flexible and common.</p>
+<p>You can create a matrix using the <code>matrix()</code> function. You provide a vector of the data, the number of rows (<code>nrow</code>), and the number of columns (<code>ncol</code>). By default, matrices are filled column by column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a matrix of physiological data (e.g., HR and BP for 3 time points)</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's arrange data as: Col 1 = HR, Col 2 = BP</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Data vector: 60, 120 (HR), 80, 140 (BP)</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>phys_matrix_data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">80</span>, <span class="dv">120</span>, <span class="dv">140</span>, <span class="dv">90</span>, <span class="dv">130</span>) <span class="co"># HR data then BP data</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>phys_matrix <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> phys_matrix_data, </span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>, </span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(phys_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   60  140
+[2,]   80   90
+[3,]  120  130</code></pre>
+</div>
+</div>
+<p>But wait, this filled column by column! Let’s specify <code>byrow = TRUE</code></p>
+<p>Correcting matrix creation to fill by row:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>phys_matrix_data_byrow <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">120</span>, <span class="co"># Time 1: HR, BP</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">80</span>, <span class="dv">140</span>, <span class="co"># Time 2: HR, BP</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">90</span>, <span class="dv">130</span>) <span class="co"># Time 3: HR, BP</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>phys_matrix_corrected <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> phys_matrix_data_byrow, </span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>, </span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span>, </span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(phys_matrix_corrected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   60  120
+[2,]   80  140
+[3,]   90  130</code></pre>
+</div>
+</div>
+<p>Still not right, data order matters! Let’s arrange the data vector column by column for the default fill:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data vector: HR at 3 times, then BP at 3 times</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>phys_matrix_data_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">80</span>, <span class="dv">90</span>, <span class="co"># HR at times 1, 2, 3</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>                           <span class="dv">120</span>, <span class="dv">140</span>, <span class="dv">130</span>) <span class="co"># BP at times 1, 2, 3</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>phys_matrix_bycol <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> phys_matrix_data_cols,</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>, </span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol =</span> <span class="dv">2</span></span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>phys_matrix_bycol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]   60  120
+[2,]   80  140
+[3,]   90  130</code></pre>
+</div>
+</div>
+<p>This looks better. Column 1 is HR, Column 2 is BP.</p>
+<p>You can access elements, rows, or columns of a matrix using <code>[row, column]</code>. Leave the row or column part blank to select an entire row or column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>phys_matrix_bycol[<span class="dv">1</span>, <span class="dv">1</span>] <span class="co"># Element in row 1, column 1 (HR at time 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 60</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>phys_matrix_bycol[<span class="dv">2</span>, ] <span class="co"># Entire second row (HR and BP at time 2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  80 140</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>phys_matrix_bycol[, <span class="dv">1</span>] <span class="co"># Entire first column (HR at all times) - this is a vector!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 60 80 90</code></pre>
+</div>
+</div>
+<p><strong>Try It Yourself:</strong></p>
+<p>Create a matrix named <code>training_load</code> with 4 rows (subjects) and 2 columns (Session 1 Load, Session 2 Load). Fill it with some numerical values (e.g., RPE, weight lifted, arbitrary units).</p>
+<ol type="1">
+<li>Access the load from Session 2 for the 3rd subject.</li>
+<li>Access all loads for the 1st subject.</li>
+<li>Access the loads from Session 1 for all subjects.</li>
+</ol>
+<p>Matrices are less common for raw experimental data in R compared to data frames, but they might appear when you deal with specific types of model outputs or perform operations that result in a matrix structure.</p>
+</section>
+<section id="data-frames-the-workhorse-for-tabular-data" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="data-frames-the-workhorse-for-tabular-data"><span class="header-section-number">2.3.3</span> Data Frames: The Workhorse for Tabular Data</h3>
+<p>For organizing most physiological experimental data and for handling the output of ODE solvers in R, the <strong>data frame</strong> is the most important data structure. A data frame is essentially a list of vectors of the same length, where each vector is a column. Unlike a matrix, different columns in a data frame can have <em>different</em> data types (e.g., one column can be numbers, another can be text, another can be logical values).</p>
+<p>Think of a data frame as a spreadsheet or a table in a database, where each column represents a different variable (Time, HeartRate, BloodPressure, SubjectID, Group) and each row represents an observation or a subject at a specific time point.</p>
+<p>You create a data frame using the <code>data.frame()</code> function, where each argument is a vector that will become a column. You can name the arguments to set the column names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our earlier vectors</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>time_points_min <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>heart_rates <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">72</span>, <span class="dv">95</span>, <span class="dv">120</span>, <span class="dv">145</span>, <span class="dv">150</span>, <span class="dv">152</span>)</span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>delta_bp_mmhg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">22</span>, <span class="dv">20</span>)</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>subject_id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>) <span class="co"># A character vector</span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame from these vectors</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>exercise_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Time =</span> time_points_min,</span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>                            <span class="at">HeartRate =</span> heart_rates,</span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>                            <span class="at">DeltaBP =</span> delta_bp_mmhg,</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Subject =</span> subject_id)</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>exercise_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Time HeartRate DeltaBP Subject
+1    0        60       0       A
+2    1        72       5       A
+3    2        95      10       A
+4    3       120      15       A
+5    4       145      20       A
+6    5       150      22       A
+7    6       152      20       A</code></pre>
+</div>
+</div>
+<p>This data frame clearly organizes our physiological measurements by time point and variable.</p>
+<p><strong>Inspecting Data Frames</strong></p>
+<p>Before working with a data frame, it’s useful to get a quick overview:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first few rows (useful for large datasets)</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exercise_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Time HeartRate DeltaBP Subject
+1    0        60       0       A
+2    1        72       5       A
+3    2        95      10       A
+4    3       120      15       A
+5    4       145      20       A
+6    5       150      22       A</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary statistics for each column</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(exercise_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Time       HeartRate        DeltaBP        Subject         
+ Min.   :0.0   Min.   : 60.0   Min.   : 0.00   Length:7          
+ 1st Qu.:1.5   1st Qu.: 83.5   1st Qu.: 7.50   Class :character  
+ Median :3.0   Median :120.0   Median :15.00   Mode  :character  
+ Mean   :3.0   Mean   :113.4   Mean   :13.14                     
+ 3rd Qu.:4.5   3rd Qu.:147.5   3rd Qu.:20.00                     
+ Max.   :6.0   Max.   :152.0   Max.   :22.00                     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the names of the columns</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(exercise_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Time"      "HeartRate" "DeltaBP"   "Subject"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the structure and data types of each column</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(exercise_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   7 obs. of  4 variables:
+ $ Time     : num  0 1 2 3 4 5 6
+ $ HeartRate: num  60 72 95 120 145 150 152
+ $ DeltaBP  : num  0 5 10 15 20 22 20
+ $ Subject  : chr  "A" "A" "A" "A" ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the dimensions (rows, columns)</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(exercise_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7 4</code></pre>
+</div>
+</div>
+<p><strong>Accessing Data Frame Elements, Rows, and Columns</strong></p>
+<p>Accessing data in a data frame is similar to matrices and vectors, but with additional convenient methods.</p>
+<ol type="1">
+<li><strong>Using <code>[row, column]</code>:</strong> Same as matrices.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>exercise_data[<span class="dv">1</span>, <span class="dv">2</span>] <span class="co"># Heart rate at the first time point</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 60</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>exercise_data[<span class="dv">3</span>, ] <span class="co"># All data for the third time point</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Time HeartRate DeltaBP Subject
+3    2        95      10       A</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>exercise_data[, <span class="dv">2</span>] <span class="co"># All heart rates (returns a vector)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  60  72  95 120 145 150 152</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Using the <code>$</code> Operator:</strong> This is the most common way to access an entire column by its name. It returns a vector.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>exercise_data<span class="sc">$</span>HeartRate <span class="co"># Get the entire HeartRate column as a vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  60  72  95 120 145 150 152</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>exercise_data<span class="sc">$</span>Time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0 1 2 3 4 5 6</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>Using <code>[, "column_name"]</code>:</strong> Another way to access a column by name using the square brackets.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>exercise_data[, <span class="st">"DeltaBP"</span>] <span class="co"># Get the DeltaBP column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0  5 10 15 20 22 20</code></pre>
+</div>
+</div>
+<p><strong>Adding New Columns</strong></p>
+<p>You can easily add new columns to a data frame, often by performing calculations on existing columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assume RestingBP is 80 mmHg. Calculate AbsoluteBP</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>exercise_data<span class="sc">$</span>AbsoluteBP <span class="ot">&lt;-</span> <span class="dv">80</span> <span class="sc">+</span> exercise_data<span class="sc">$</span>DeltaBP</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Heart Rate Reserve (HRR) if max HR is 190</span></span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>max_hr <span class="ot">&lt;-</span> <span class="dv">190</span></span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>resting_hr <span class="ot">&lt;-</span> <span class="dv">60</span></span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>hrr <span class="ot">&lt;-</span> max_hr <span class="sc">-</span> resting_hr</span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a>exercise_data<span class="sc">$</span>HRR_percent <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> (exercise_data<span class="sc">$</span>HeartRate <span class="sc">-</span> resting_hr) <span class="sc">/</span> hrr</span>
+<span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(exercise_data) <span class="co"># View the updated data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Time HeartRate DeltaBP Subject AbsoluteBP HRR_percent
+1    0        60       0       A         80    0.000000
+2    1        72       5       A         85    9.230769
+3    2        95      10       A         90   26.923077
+4    3       120      15       A         95   46.153846
+5    4       145      20       A        100   65.384615
+6    5       150      22       A        102   69.230769
+7    6       152      20       A        100   70.769231</code></pre>
+</div>
+</div>
+<p><strong>Subsetting Data Frames</strong></p>
+<p>Selecting specific rows (observations) based on conditions is a common task. You can use logical conditions within the square brackets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only the rows where HeartRate is greater than 100 bpm</span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>high_hr_data <span class="ot">&lt;-</span> exercise_data[exercise_data<span class="sc">$</span>HeartRate <span class="sc">&gt;</span> <span class="dv">100</span>, ]</span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(high_hr_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Time HeartRate DeltaBP Subject AbsoluteBP HRR_percent
+4    3       120      15       A         95    46.15385
+5    4       145      20       A        100    65.38462
+6    5       150      22       A        102    69.23077
+7    6       152      20       A        100    70.76923</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select rows where Time is between 2 and 5 minutes (inclusive)</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Use '&amp;' for 'and'</span></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>mid_exercise_data <span class="ot">&lt;-</span> </span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>  exercise_data[exercise_data<span class="sc">$</span>Time <span class="sc">&gt;=</span> <span class="dv">2</span> <span class="sc">&amp;</span> exercise_data<span class="sc">$</span>Time <span class="sc">&lt;=</span> <span class="dv">5</span>, ]</span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mid_exercise_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Time HeartRate DeltaBP Subject AbsoluteBP HRR_percent
+3    2        95      10       A         90    26.92308
+4    3       120      15       A         95    46.15385
+5    4       145      20       A        100    65.38462
+6    5       150      22       A        102    69.23077</code></pre>
+</div>
+</div>
+<p>Notice the comma after the condition <code>exercise_data$HeartRate &gt; 100</code>. This indicates we are selecting <em>rows</em>. If you wanted to select specific rows <em>and</em> specific columns, you would specify both (e.g., <code>exercise_data[exercise_data$Time &gt;= 2, c("Time", "HeartRate")]</code>). Leaving the column part blank selects all columns.</p>
+<p><strong>Data Frames and Model Output</strong></p>
+<p>Why is understanding data frames so important for this book? Because the standard output from R packages that solve differential equations, like the <code>deSolve</code> package we will use extensively, is a data frame!</p>
+<p>When you simulate a physiological model with <code>deSolve</code>, the result will be a data frame where:</p>
+<ul>
+<li>The first column contains the time points.</li>
+<li>Subsequent columns contain the predicted values of each of your state variables (HeartRate, SympatheticTone, etc.) at those time points.</li>
+</ul>
+<p>You will then use the techniques learned in this section – accessing columns by name (<code>$</code>), selecting specific rows (e.g., for a time window), and using these columns as vectors – to analyze the simulation results and create visualizations.</p>
+<p><strong>Try It Yourself:</strong></p>
+<p>Using the <code>exercise_data</code> data frame you created:</p>
+<ol type="1">
+<li>Get the average <code>AbsoluteBP</code>.</li>
+<li>Select only the rows where <code>HRR_percent</code> is greater than 50%.</li>
+<li>Calculate the mean <code>HeartRate</code> for the time points where <code>DeltaBP</code> is exactly 20 mmHg.</li>
+</ol>
+<p>Vectors, matrices, and data frames are the fundamental structures for organizing data in R. Vectors are sequences of the same type, useful for lists of parameters or single variables over time. Matrices are 2D arrays of the same type. Data frames are the most flexible, allowing columns of different types and serving as the standard format for tabular data, including the crucial time-series output from our differential equation models.</p>
+<p>Mastering how to create, inspect, access, and perform basic operations on data frames is a critical step. With these skills, you are well-equipped to handle the experimental data you might want to compare your models against, and crucially, to work with the simulated time courses that your models will produce in R. In the next section, we’ll look at how to get your existing physiological data <em>into</em> R by importing files.</p>
+</section>
+</section>
+<section id="importing-and-exporting-data" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="importing-and-exporting-data"><span class="header-section-number">2.4</span> Importing and exporting data</h2>
+<p>Much of the power of mathematical modeling comes from its ability to help us interpret and understand real-world data. In your research, you collect physiological measurements – heart rate, blood pressure, gas exchange variables, EMG signals, force output, and many others. To compare your model simulations to these experimental results, or to use your data to inform model parameters, you first need to get this data into R. Similarly, after running a model simulation, you might want to save the predicted time course of your variables to a file for later analysis or sharing.</p>
+<p>This section will cover the essential skills for importing data from external files into R and exporting data (like your simulation results) from R to files.</p>
+<p>As we learned in the previous section, R’s <strong>data frame</strong> structure is perfectly suited for handling tabular data – the rows represent observations (e.g., time points, subjects), and the columns represent different variables (e.g., Time, HeartRate, VO2, SubjectID). Most physiological data you’ll encounter in spreadsheets or text files can be easily imported into an R data frame.</p>
+<section id="setting-your-working-directory" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="setting-your-working-directory"><span class="header-section-number">2.4.1</span> Setting Your Working Directory</h3>
+<p>Before importing or exporting files, it’s crucial to understand R’s <strong>working directory</strong>. The working directory is the default folder on your computer where R will look for files to read and where it will save files you export.</p>
+<p>If you don’t set your working directory, you’ll have to type the full path to your file every time you want to access it, which can be cumbersome and prone to errors. It’s best practice to set your working directory to the folder where your data files are stored for a particular project.</p>
+<p>You can check your current working directory using the <code>getwd()</code> function:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] "/Users/yourusername/Documents" # Example output - this will vary!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can change your working directory using the <code>setwd()</code> function. Replace <code>"path/to/your/data/folder"</code> with the actual path on your computer:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for macOS/Linux:</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/yourusername/Documents/PhysioModelingProject/Data"</span>)</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for Windows (note forward slashes or double backslashes):</span></span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/yourusername/Documents/PhysioModelingProject/Data"</span>)</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">yourusername</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">PhysioModelingProject</span><span class="sc">\\</span><span class="st">Data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In RStudio, you can also set the working directory using the GUI: <code>Session -&gt; Set Working Directory -&gt; Choose Directory...</code> Navigate to your desired folder and click “Open”. RStudio will automatically generate and run the <code>setwd()</code> command for you in the Console. Using RStudio’s interface is often easier than typing paths manually.</p>
+<p>Once you’ve set your working directory, R will look for files in that folder.</p>
+</section>
+<section id="importing-data-from-text-files-csv-and-tab-delimited" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="importing-data-from-text-files-csv-and-tab-delimited"><span class="header-section-number">2.4.2</span> Importing Data from Text Files (CSV and Tab-delimited)</h3>
+<p>Two of the most common formats for sharing tabular data are CSV (Comma Separated Values) and tab-delimited text files. These are plain text files where columns are separated by a specific character (a comma for CSV, a tab for tab-delimited files), and rows are separated by new lines. They can be easily created or exported from spreadsheet programs like Excel or data acquisition software.</p>
+<p><strong>Importing CSV Files (<code>.csv</code>)</strong></p>
+<p>CSV files are perhaps the most common. In a CSV file, columns are separated by commas. Here’s how to read a CSV file into an R data frame using the <code>read.csv()</code> function:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming you have a file named "exercise_hr_vo2.csv" in your working directory</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The file might look something like this:</span></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Time,HR,VO2</span></span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 0,60,0.3</span></span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1,70,0.8</span></span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2,90,1.5</span></span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3,120,2.5</span></span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the CSV file into a data frame</span></span>
+<span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a>my_phys_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"exercise_hr_vo2.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By default, <code>read.csv()</code> assumes:</p>
+<ul>
+<li>The first row of the file contains the column headers (<code>header = TRUE</code>).</li>
+<li>Columns are separated by commas (<code>sep = ","</code>).</li>
+<li>Text columns should be converted into <code>factors</code>. For data analysis and modeling, converting text into factors can sometimes be problematic or unnecessary. You can often prevent this by adding the argument <code>stringsAsFactors = FALSE</code>.</li>
+</ul>
+<p>So, a more robust way to read your CSV might be:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>my_phys_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"exercise_hr_vo2.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After importing, it’s crucial to inspect the data frame to ensure it was read correctly:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_phys_data) <span class="co"># View the first few rows</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(my_phys_data) <span class="co"># Get summary statistics</span></span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(my_phys_data) <span class="co"># Check the structure and data types of columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check if the column names are correct and if the data types are as expected (e.g., Time, HR, and VO2 should be numeric).</p>
+<p><strong>Importing Tab-Delimited Files (<code>.txt</code>, <code>.tsv</code>)</strong></p>
+<p>Tab-delimited files are similar to CSV but use tabs (<code>\t</code>) instead of commas to separate columns. You can use the <code>read.table()</code> function with <code>sep="\t"</code> or the convenience function <code>read.delim()</code>.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming you have a file named "subject_data.txt" in your working directory</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The file might look like this:</span></span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="co"># SubjectID Age Gender  Group</span></span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="co"># S1    25  Male    Trained</span></span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a><span class="co"># S2    30  Female  Untrained</span></span>
+<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="co"># S3    28  Male    Trained</span></span>
+<span id="cb113-7"><a href="#cb113-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-8"><a href="#cb113-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the tab-delimited file</span></span>
+<span id="cb113-9"><a href="#cb113-9" aria-hidden="true" tabindex="-1"></a>subject_info <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"subject_data.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb113-10"><a href="#cb113-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-11"><a href="#cb113-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(subject_info)</span>
+<span id="cb113-12"><a href="#cb113-12" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(subject_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>read.delim()</code> is just a wrapper around <code>read.table(file, sep = "\\t", ...)</code> where <code>\\t</code> represents a tab character.</p>
+<p><strong>Try It Yourself:</strong></p>
+<ol type="1">
+<li>Create a small text file on your computer (using a text editor like Notepad, TextEdit, or RStudio’s editor) with some physiological data, perhaps including time, heart rate, and blood pressure, separated by commas. Save it as <code>my_exercise_data.csv</code> in a specific folder.</li>
+<li>In RStudio, set your working directory to that folder using <code>setwd()</code> or the RStudio menus.</li>
+<li>Use <code>read.csv()</code> to import the data into a data frame in R.</li>
+<li>Use <code>head()</code> and <code>summary()</code> to inspect the imported data frame.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+R Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While base R functions like <code>read.csv()</code> and <code>read.delim()</code> are perfectly functional, the <code>readr</code> package (part of the <code>tidyverse</code> suite) offers faster and more consistent functions like <code>read_csv()</code> and <code>read_delim()</code>. If you work with very large datasets frequently, exploring <code>readr</code> is worthwhile, but the base R functions are sufficient for learning the core concepts.</p>
+</div>
+</div>
+<p><strong>Importing Data from Excel Files (<code>.xls</code>, <code>.xlsx</code>)</strong></p>
+<p>Excel files are ubiquitous in research labs. While not a plain text format, you can still import data directly from Excel files into R, although it requires installing and loading an additional package. The <code>readxl</code> package is a popular and reliable choice.</p>
+<ol type="1">
+<li><strong>Install and Load the <code>readxl</code> package:</strong> You only need to install a package once on your computer. You need to load it into each R session where you want to use it.</li>
+</ol>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>) <span class="co"># Install the package (only need to do this once)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># Load the package into the current R session (do this every time you start a new session and want to use the package)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><strong>Read the Excel file:</strong> Use the <code>read_excel()</code> function from the <code>readxl</code> package.</li>
+</ol>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming you have a file named "experimental_results.xlsx" in your working directory</span></span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and the data is on the first sheet.</span></span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>experimental_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"experimental_results.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If your data is on a specific sheet within the Excel file, you can specify the sheet name or number using the <code>sheet</code> argument:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from the sheet named "Subject 1 Data"</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>subject1_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"experimental_results.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Subject 1 Data"</span>)</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from the second sheet</span></span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>subject2_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"experimental_results.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Like with text file import, always inspect your data after importing using functions like <code>head()</code>, <code>summary()</code>, and <code>str()</code>.</p>
+<p><strong>Try It Yourself:</strong></p>
+<ol type="1">
+<li>If you have Excel installed, create a simple spreadsheet with physiological data across a few columns. Save it as an <code>.xlsx</code> file in your working directory.</li>
+<li>Install and load the <code>readxl</code> package.</li>
+<li>Use <code>read_excel()</code> to import your data into an R data frame.</li>
+<li>Inspect the imported data frame.</li>
+</ol>
+</section>
+<section id="exporting-data-from-r" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="exporting-data-from-r"><span class="header-section-number">2.4.3</span> Exporting Data from R</h3>
+<p>Just as you can import data into R, you can also export data frames (like the results of your model simulations) to files that can be opened in spreadsheet programs or shared with colleagues.</p>
+<p><strong>1. Exporting to CSV (<code>.csv</code>)</strong></p>
+<p>Use the <code>write.csv()</code> function to save a data frame to a CSV file.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'simulation_output' is a data frame containing your model results</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from a simulation run.</span></span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(simulation_output, <span class="st">"my_simulation_results.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>By default, <code>write.csv()</code> includes row names in the output file. Usually, you don’t want these automatically generated row numbers from R in your exported data. To prevent this, use the argument <code>row.names = FALSE</code>:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(simulation_output, <span class="st">"my_simulation_results_no_rownames.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>2. Exporting to Tab-Delimited Text (<code>.txt</code>)</strong></p>
+<p>Use the <code>write.table()</code> function and specify the tab separator (<code>sep="\t"</code>) to save a data frame to a tab-delimited file.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export the simulation results to a tab-delimited file</span></span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(simulation_output, <span class="st">"my_simulation_results.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Try It Yourself:</strong></p>
+<ol type="1">
+<li>Create a small data frame directly in R (like the <code>exercise_data</code> example from the previous section).</li>
+<li>Use <code>write.csv()</code> to save this data frame to a CSV file in your working directory. Open the file in a text editor or spreadsheet program to verify it saved correctly.</li>
+<li>Use <code>write.table()</code> to save the same data frame to a <code>.txt</code> file. Open it to verify the tab separation.</li>
+</ol>
+<p>Being able to import and export data is a fundamental skill for using R in research. Importing allows you to bring your experimental physiological data into R data frames, which you can then use for analysis, visualization, and crucially, comparison with your model simulations later on. Exporting allows you to save the output of your models or any processed data frames. With the ability to handle single values, vectors, data frames, and import/export files, you have the basic data manipulation skills needed to start working with R in a research context.</p>
+<p>In the next section, we’ll build on this by learning how to create plots – the essential step for visualizing your data and your model’s dynamic outputs.</p>
+</section>
+</section>
+<section id="basic-plotting-in-r" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="basic-plotting-in-r"><span class="header-section-number">2.5</span> Basic plotting in R</h2>
+<p>We’ve covered the basics of R syntax, handling different data types, working with fundamental data structures like vectors and data frames, and importing/exporting your physiological data. Now, we arrive at a critically important aspect of using R for physiological modeling: <strong>visualization</strong>.</p>
+<p>As we discussed in Chapter 1, physiological systems are dynamic, and their behavior unfolds over time. Whether you are analyzing experimental data (like heart rate changes during exercise) or examining the output of a mathematical model simulation (the predicted time course of a variable), seeing the data as a graph is infinitely more informative than looking at a table of numbers. Visualization allows us to quickly grasp trends, patterns, magnitudes of change, and relationships between variables. For dynamic models, plotting the predicted time series is how we actually <em>see</em> the dynamics that the differential equations describe. It’s how we understand what our model is telling us.</p>
+<p>R has excellent capabilities for creating graphs. There are two primary systems for plotting in R: <strong>Base R Graphics</strong> and the <strong><code>ggplot2</code> package</strong>.</p>
+<ul>
+<li><strong>Base R Graphics:</strong> This system is built into R and provides functions like <code>plot()</code>, <code>lines()</code>, <code>points()</code>, etc. It’s great for quick, straightforward plots.</li>
+<li><strong><code>ggplot2</code>:</strong> This is a very popular and powerful package based on the “grammar of graphics”, which provides a more structured and flexible way to build plots layer by layer. It excels at creating complex, publication-quality graphics and works seamlessly with data frames.</li>
+</ul>
+<p>While Base R graphics are useful for rapid exploratory plotting, we will primarily focus on <code>ggplot2</code> in this book. This is because <code>ggplot2</code> is particularly well-suited for handling data in data frames (which is how our model outputs from <code>deSolve</code> will be structured) and offers superior control and flexibility for creating the clear, informative plots necessary for presenting research findings and comparing models to data.</p>
+<p>Let’s briefly look at a simple Base R plot, and then we’ll dive into the power of <code>ggplot2</code>.</p>
+<section id="a-glimpse-of-base-r-plotting" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="a-glimpse-of-base-r-plotting"><span class="header-section-number">2.5.1</span> A Glimpse of Base R Plotting</h3>
+<p>Using Base R graphics, you can create a simple scatter plot or line plot directly from vectors. Let’s use our <code>time_points_min</code> and <code>heart_rates</code> vectors from the previous section:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple scatter plot</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(time_points_min, heart_rates,</span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Time (minutes)"</span>, <span class="co"># Label for the x-axis</span></span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Heart Rate (bpm)"</span>, <span class="co"># Label for the y-axis</span></span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Heart Rate During Exercise"</span>, <span class="co"># Plot title</span></span>
+<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>) <span class="co"># Set the plotting symbol to a solid circle</span></span>
+<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a line connecting the points</span></span>
+<span id="cb121-9"><a href="#cb121-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(time_points_min, heart_rates, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># col for color, lwd for line width</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-a_gentle_introduction_to_r_for_modelers_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This code would generate a scatter plot with points and then overlay a blue line connecting them, creating a basic time series graph. You can see it’s relatively straightforward for simple plots.</p>
+</section>
+<section id="introducing-ggplot2-building-plots-layer-by-layer" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="introducing-ggplot2-building-plots-layer-by-layer"><span class="header-section-number">2.5.2</span> Introducing <code>ggplot2</code>: Building Plots Layer by Layer</h3>
+<p><code>ggplot2</code> takes a different approach. It’s based on the idea that any plot can be built by combining different components or layers. The key components are:</p>
+<ol type="1">
+<li><strong>Data:</strong> The data set containing the variables you want to plot (usually a data frame).</li>
+<li><strong>Aesthetic Mappings (<code>aes()</code>):</strong> How variables in your data are mapped to visual properties of the plot, such as their position on the x and y axes, color, size, shape, or transparency.</li>
+<li><strong>Geometric Objects (<code>geom_</code> functions):</strong> The visual elements used to represent the data, such as points (<code>geom_point</code>), lines (<code>geom_line</code>), bars (<code>geom_bar</code>), histograms (<code>geom_histogram</code>), etc.</li>
+<li><strong>Faceting (Optional):</strong> Splitting the plot into multiple panels based on the levels of one or more categorical variables (useful for showing data from different subjects or groups).</li>
+<li><strong>Statistical Transformations (Optional):</strong> Performing statistical summaries (like calculating means or smoothing lines) before plotting.</li>
+<li><strong>Scales (Optional):</strong> Controlling the mapping from data values to aesthetic values (e.g., setting the range of the axes, choosing colors).</li>
+<li><strong>Coordinate Systems (Optional):</strong> The system used to map positions (e.g., Cartesian, polar).</li>
+<li><strong>Themes (Optional):</strong> Controlling the overall appearance of the plot (fonts, background color, grid lines).</li>
+</ol>
+<p>You build a <code>ggplot2</code> plot by starting with the <code>ggplot()</code> function, adding layers using the <code>+</code> operator.</p>
+<p>First, you need to install and load the <code>ggplot2</code> package (just like <code>readxl</code>). You only install it once, but you load it in every R session where you want to use it.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>) <span class="co"># Install the package (if you haven't already)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) <span class="co"># Load the package for this session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, let’s recreate our exercise heart rate plot using <code>ggplot2</code>. We’ll use the <code>exercise_data</code> data frame we created earlier, which contains <code>Time</code> and <code>HeartRate</code> columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start the plot: specify data frame and map Time to x and HeartRate to y</span></span>
+<span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> exercise_data, <span class="fu">aes</span>(<span class="at">x =</span> Time, <span class="at">y =</span> HeartRate)) <span class="sc">+</span></span>
+<span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># Add a layer of points</span></span>
+<span id="cb124-4"><a href="#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()    <span class="co"># Add a layer of lines</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-a_gentle_introduction_to_r_for_modelers_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s break this down:</p>
+<ul>
+<li><code>ggplot(data = exercise_data, aes(x = Time, y = HeartRate))</code>: This is the base layer. We tell <code>ggplot</code> to use <code>exercise_data</code> as the source of data. Inside <code>aes()</code>, we define the <em>aesthetic mapping</em>: map the <code>Time</code> column to the x-axis position and the <code>HeartRate</code> column to the y-axis position.</li>
+<li><code>+</code>: This operator is used to add layers or customize elements to the plot object created by the previous line.</li>
+<li><code>geom_point()</code>: This layer tells <code>ggplot</code> to draw points for each data point, using the x and y positions defined in the <code>aes()</code> mapping.</li>
+<li><code>geom_line()</code>: This layer tells <code>ggplot</code> to draw lines connecting the points, again using the x and y positions.</li>
+</ul>
+<p>Running this code will produce a plot in the Plots pane. Notice that <code>ggplot2</code> automatically adds axis labels based on the variable names and creates a simple background.</p>
+</section>
+<section id="customizing-your-ggplot2-plots" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="customizing-your-ggplot2-plots"><span class="header-section-number">2.5.3</span> Customizing Your <code>ggplot2</code> Plots**</h3>
+<p>To make your plots informative and ready for presentation, you’ll need to customize them. Here are some common customizations:</p>
+<p><strong>1. Adding Labels and Title:</strong></p>
+<p>Use the <code>labs()</code> function to add a title, subtitles, captions, and customize axis labels or the titles of legends (for colors, shapes, etc.).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> exercise_data, <span class="fu">aes</span>(<span class="at">x =</span> Time, <span class="at">y =</span> HeartRate)) <span class="sc">+</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Heart Rate Response During Moderate Exercise"</span>,</span>
+<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Time (minutes)"</span>,</span>
+<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Heart Rate (beats/min)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-a_gentle_introduction_to_r_for_modelers_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>2. Changing Appearance (Color, Size, Line Type, Shape):</strong></p>
+<p>You can set fixed aesthetic properties outside the <code>aes()</code> function within a <code>geom_</code> function, or map these properties to variables <em>inside</em> <code>aes()</code>.</p>
+<ul>
+<li><p><strong>Setting Fixed Appearance:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> exercise_data, <span class="fu">aes</span>(<span class="at">x =</span> Time, <span class="at">y =</span> HeartRate)) <span class="sc">+</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="co"># Set point color to red, size to 3</span></span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># Dashed blue line, width 1</span></span>
+<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Heart Rate Response During Moderate Exercise"</span>,</span>
+<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Time (minutes)"</span>,</span>
+<span id="cb126-6"><a href="#cb126-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Heart Rate (beats/min)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-a_gentle_introduction_to_r_for_modelers_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can use color names (like <code>"red"</code>, <code>"blue"</code>, <code>"grey"</code>) or hexadecimal color codes (like <code>" #FF0000"</code> for red). <code>linetype</code> can be <code>"solid"</code>, <code>"dashed"</code>, <code>"dotted"</code>, etc. <code>size</code> for points, <code>linewidth</code> for lines.</p></li>
+<li><p><strong>Mapping Appearance to Variables:</strong> This is powerful for showing relationships or distinguishing groups/variables on the same plot.</p>
+<p>Imagine your data frame had a column indicating if the subject is “Trained” or “Untrained”, or if the measurement was “Simulation” vs “Experimental Data”. You could map this column to <code>color</code>.</p>
+<p>To plot multiple variables (like Heart Rate and Absolute Blood Pressure) against Time on the same graph with different colors/lines using <code>ggplot2</code>, it’s best practice to first reshape your data frame into a “long” format. This means instead of having separate columns for <code>HeartRate</code> and <code>AbsoluteBP</code>, you’d have one column for <code>Value</code> and another column indicating the <code>Variable</code> (e.g., “HeartRate” or “AbsoluteBP”). The <code>tidyr</code> package (another <code>tidyverse</code> package) is excellent for this, specifically the <code>pivot_longer()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install and load tidyr if you haven't</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyr")</span></span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape the data frame to long format for plotting multiple variables</span></span>
+<span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Exclude Subject and HRR_percent for this example plot</span></span>
+<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a>exercise_data_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(exercise_data,</span>
+<span id="cb127-8"><a href="#cb127-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">cols =</span> <span class="fu">c</span>(HeartRate, AbsoluteBP), <span class="co"># Columns to pivot</span></span>
+<span id="cb127-9"><a href="#cb127-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">names_to =</span> <span class="st">"Physiological_Variable"</span>, <span class="co"># New column for variable names</span></span>
+<span id="cb127-10"><a href="#cb127-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">values_to =</span> <span class="st">"Value"</span>) <span class="co"># New column for values</span></span>
+<span id="cb127-11"><a href="#cb127-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-12"><a href="#cb127-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exercise_data_long) <span class="co"># See the new structure</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+   Time DeltaBP Subject HRR_percent Physiological_Variable Value
+  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;                  &lt;dbl&gt;
+1     0       0 A              0    HeartRate                 60
+2     0       0 A              0    AbsoluteBP                80
+3     1       5 A              9.23 HeartRate                 72
+4     1       5 A              9.23 AbsoluteBP                85
+5     2      10 A             26.9  HeartRate                 95
+6     2      10 A             26.9  AbsoluteBP                90</code></pre>
+</div>
+</div>
+<p>Now, plot the <code>Value</code> against <code>Time</code>, mapping <code>Physiological_Variable</code> to <code>color</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> exercise_data_long, <span class="fu">aes</span>(<span class="at">x =</span> Time, <span class="at">y =</span> Value, <span class="at">color =</span> Physiological_Variable)) <span class="sc">+</span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Dynamic Physiological Response During Exercise"</span>,</span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Time (minutes)"</span>,</span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Value"</span>,</span>
+<span id="cb129-7"><a href="#cb129-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Variable"</span>) <span class="co"># Customize the legend title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-a_gentle_introduction_to_r_for_modelers_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>ggplot2</code> automatically assigns a different color (and creates a legend) for each unique value in the <code>Physiological_Variable</code> column (“HeartRate”, “AbsoluteBP”). This is incredibly powerful for visualizing and comparing different time series, including later when you plot simulated vs.&nbsp;experimental data.</p></li>
+</ul>
+<p><strong>3. Themes for Appearance:</strong></p>
+<p><code>ggplot2</code> themes control non-data plot elements like background color, grid lines, font styles, etc. <code>theme_minimal()</code>, <code>theme_bw()</code>, and <code>theme_classic()</code> are popular choices for a cleaner look than the default grey background. Add them as a layer:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> exercise_data_long, <span class="fu">aes</span>(<span class="at">x =</span> Time, <span class="at">y =</span> Value, <span class="at">color =</span> Physiological_Variable)) <span class="sc">+</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Dynamic Physiological Response During Exercise"</span>,</span>
+<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Time (minutes)"</span>,</span>
+<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Value"</span>,</span>
+<span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Variable"</span>) <span class="sc">+</span></span>
+<span id="cb130-8"><a href="#cb130-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="co"># Apply a black and white theme</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02-a_gentle_introduction_to_r_for_modelers_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>4. Saving Your Plots</strong></p>
+<p>Once you’ve created a plot you’re happy with, you can save it to a file (like PNG, JPEG, PDF, TIFF) using the <code>ggsave()</code> function. It saves the <em>last plot displayed</em> by default.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the last plot to a PNG file</span></span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"physiological_response_plot.png"</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>)</span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to a PDF</span></span>
+<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"physiological_response_plot.pdf"</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">units =</span> <span class="st">"in"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can specify the filename, directory (if not the working directory), dimensions (<code>width</code>, <code>height</code>), and units (<code>units = "in"</code>, <code>"cm"</code>, or <code>"mm"</code>).</p>
+<p><strong>Try It Yourself:</strong></p>
+<ol type="1">
+<li>Using the <code>exercise_data</code> data frame (or your own imported data frame):</li>
+<li>Use <code>ggplot2</code> to create a scatter plot of <code>DeltaBP</code> vs.&nbsp;<code>Time</code>. Add points and lines.</li>
+<li>Add a title and axis labels to the plot.</li>
+<li>Reshape the data frame to include <code>HeartRate</code>, <code>DeltaBP</code>, and <code>AbsoluteBP</code> in the long format.</li>
+<li>Create a single plot showing the time courses of <code>HeartRate</code>, <code>DeltaBP</code>, and <code>AbsoluteBP</code> on the same graph, colored by variable. Add appropriate labels and a title. Apply a theme like <code>theme_classic()</code>.</li>
+<li>Save one of your plots as a PNG file.</li>
+</ol>
+<p>Visualization is paramount for understanding dynamic physiological data and the output of our models. While Base R graphics offer a quick plotting option, <code>ggplot2</code> provides a powerful, flexible, and systematic way to create high-quality plots, especially when working with data frames containing multiple variables or simulation results. By understanding the fundamental concepts of <code>ggplot2</code> – mapping data to aesthetics within <code>aes()</code> and adding visual layers with <code>geom_</code> functions – and learning how to customize labels, colors, and line types, you have gained the essential skills to visualize both your experimental data and the dynamic predictions from your physiological models. This ability to see and interpret the dynamic behavior is a cornerstone of using differential equations for physiological insight.</p>
+</section>
+</section>
+<section id="writing-simple-r-functions" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="writing-simple-r-functions"><span class="header-section-number">2.6</span> Writing simple R functions</h2>
+<p>We’ve learned how to perform calculations, store values in variables, work with collections of data in vectors and data frames, and create basic plots. These are fundamental building blocks in R. Now, let’s introduce another powerful concept that is absolutely crucial for building dynamic models in R: <strong>functions</strong>.</p>
+<p>You’ve already used many built-in R functions, like <code>c()</code>, <code>length()</code>, <code>mean()</code>, <code>sqrt()</code>, <code>ggplot()</code>, and <code>read.csv()</code>. A function is simply a reusable block of code designed to perform a specific task. It takes inputs (called arguments), performs some operations using those inputs, and then returns an output.</p>
+<section id="why-write-your-own-functions" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="why-write-your-own-functions"><span class="header-section-number">2.6.1</span> Why Write Your Own Functions?</h3>
+<p>Why would you bother writing your own functions when R has so many built-in ones?</p>
+<ol type="1">
+<li><strong>Avoid Repetition (DRY - Don’t Repeat Yourself):</strong> If you find yourself performing the same sequence of calculations or operations multiple times in your script, putting that code into a function allows you to write it once and call it whenever you need it. This makes your code shorter, cleaner, and easier to read.</li>
+<li><strong>Organization:</strong> Functions break down complex tasks into smaller, manageable pieces. This makes your scripts easier to understand, debug, and maintain.</li>
+<li><strong>Reusability:</strong> Once you’ve written a function, you can reuse it in different parts of the same script, in entirely different scripts, or even share it with colleagues.</li>
+<li><strong>Readability:</strong> Giving a block of code a descriptive function name makes its purpose clear. <code>calculate_bmi(mass_kg, height_m)</code> is much more immediately understandable than a raw calculation <code>mass_kg / height_m^2</code> buried in a script.</li>
+<li><strong>Maintainability and Debugging:</strong> If you need to fix a bug or modify how a specific task is performed, you only need to do it in one place (the function definition) rather than finding and changing every instance of repeated code.</li>
+</ol>
+<p>Consider calculating Body Mass Index (BMI). The formula is BMI = mass (kg) / height (m)<span class="math inline">\(^2\)</span>. If you had data for 50 subjects, you wouldn’t want to type <code>subject1_mass / subject1_height^2</code>, <code>subject2_mass / subject2_height^2</code>, etc., 50 times. A function is the perfect solution.</p>
+</section>
+<section id="how-to-define-a-simple-r-function" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="how-to-define-a-simple-r-function"><span class="header-section-number">2.6.2</span> How to Define a Simple R Function</h3>
+<p>You define a function in R using the <code>function()</code> keyword and the assignment operator (<code>&lt;-</code>). The basic syntax looks like this:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>function_name <span class="ot">&lt;-</span> <span class="cf">function</span>(argument1, argument2, ...) {</span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Code that performs the task</span></span>
+<span id="cb132-3"><a href="#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This code uses the arguments (input values)</span></span>
+<span id="cb132-4"><a href="#cb132-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb132-5"><a href="#cb132-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output_value) <span class="co"># Specify what the function should output</span></span>
+<span id="cb132-6"><a href="#cb132-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s break down the components:</p>
+<ul>
+<li><code>function_name</code>: This is the name you give your function (follow the same naming rules as variables). Choose a name that clearly describes what the function does.</li>
+<li><code>&lt;-</code>: The assignment operator, used to store the function definition in the variable <code>function_name</code>.</li>
+<li><code>function(...)</code>: This keyword tells R you are defining a function. The parentheses <code>()</code> contain the names of the <strong>arguments</strong> (inputs) the function accepts. These names are like temporary variables that will hold the values passed into the function when you call it. You can have zero or more arguments, separated by commas.</li>
+<li><code>{ ... }</code>: The curly braces enclose the <strong>body</strong> of the function. This is where you write the R code that performs the function’s task. This code can use the argument names as variables.</li>
+<li><code>return(output_value)</code>: This statement specifies the value that the function should <strong>output</strong> or return. Once R encounters a <code>return()</code> statement, the function stops executing and gives back the specified value. If you omit <code>return()</code>, R will return the result of the last evaluated expression in the function body. Using <code>return()</code> explicitly is often good practice for clarity.</li>
+</ul>
+<p><strong>Example 1: BMI Calculator Function</strong></p>
+<p>Let’s write that BMI function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function named calculate_bmi</span></span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>calculate_bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(mass_kg, height_m) {</span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function body: Calculate BMI</span></span>
+<span id="cb133-4"><a href="#cb133-4" aria-hidden="true" tabindex="-1"></a>  bmi_value <span class="ot">&lt;-</span> mass_kg <span class="sc">/</span> height_m<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb133-5"><a href="#cb133-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb133-6"><a href="#cb133-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return the calculated BMI value</span></span>
+<span id="cb133-7"><a href="#cb133-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(bmi_value)</span>
+<span id="cb133-8"><a href="#cb133-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To make this function available in your R session, you need to run the code that defines it (either type it directly into the Console and press Enter, or, preferably, type it in your script editor and run the lines using Ctrl/Cmd + Enter). Once it’s run, the function <code>calculate_bmi</code> will appear in your Environment pane.</p>
+<p>Now you can <strong>call</strong> the function by typing its name followed by parentheses containing the values you want to use for the arguments, in the correct order:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate BMI for someone 70kg and 1.75m</span></span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>bmi_subject1 <span class="ot">&lt;-</span> <span class="fu">calculate_bmi</span>(<span class="dv">70</span>, <span class="fl">1.75</span>)</span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>bmi_subject1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22.85714</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate BMI for someone 85kg and 1.80m</span></span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>bmi_subject2 <span class="ot">&lt;-</span> <span class="fu">calculate_bmi</span>(<span class="dv">85</span>, <span class="fl">1.80</span>)</span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>bmi_subject2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26.23457</code></pre>
+</div>
+</div>
+<p>You can also pass variables as arguments:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>subject3_mass <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a>subject3_height <span class="ot">&lt;-</span> <span class="fl">1.68</span></span>
+<span id="cb138-4"><a href="#cb138-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-5"><a href="#cb138-5" aria-hidden="true" tabindex="-1"></a>bmi_subject3 <span class="ot">&lt;-</span> <span class="fu">calculate_bmi</span>(subject3_mass, subject3_height)</span>
+<span id="cb138-6"><a href="#cb138-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-7"><a href="#cb138-7" aria-hidden="true" tabindex="-1"></a>bmi_subject3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26.57313</code></pre>
+</div>
+</div>
+<p>The function makes the calculation reusable and easy to read.</p>
+<p><strong>Example 2: VO2 Conversion Function</strong></p>
+<p>Let’s create a function to convert VO2 from ml/kg/min to L/min, which might be a common calculation in your analysis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the function</span></span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>convert_vo2_mlkgmin_to_lmin <span class="ot">&lt;-</span> <span class="cf">function</span>(vo2_ml_kg_min, body_weight_kg) {</span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate total VO2 in ml/min</span></span>
+<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>  vo2_ml_min <span class="ot">&lt;-</span> vo2_ml_kg_min <span class="sc">*</span> body_weight_kg</span>
+<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert ml/min to L/min</span></span>
+<span id="cb140-7"><a href="#cb140-7" aria-hidden="true" tabindex="-1"></a>  vo2_l_min <span class="ot">&lt;-</span> vo2_ml_min <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb140-8"><a href="#cb140-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-9"><a href="#cb140-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return the value in L/min</span></span>
+<span id="cb140-10"><a href="#cb140-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(vo2_l_min)</span>
+<span id="cb140-11"><a href="#cb140-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb140-12"><a href="#cb140-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-13"><a href="#cb140-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the function</span></span>
+<span id="cb140-14"><a href="#cb140-14" aria-hidden="true" tabindex="-1"></a>vo2_l_min_subjectA <span class="ot">&lt;-</span> <span class="fu">convert_vo2_mlkgmin_to_lmin</span>(<span class="at">vo2_ml_kg_min =</span> <span class="dv">50</span>, <span class="at">body_weight_kg =</span> <span class="dv">70</span>)</span>
+<span id="cb140-15"><a href="#cb140-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-16"><a href="#cb140-16" aria-hidden="true" tabindex="-1"></a>vo2_l_min_subjectA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.5</code></pre>
+</div>
+</div>
+<p>Notice that when calling the function, I used <code>argument_name = value</code>. This makes the code easier to read and allows you to provide arguments out of order (though it’s good practice to stick to the order if you know it).</p>
+<p><strong>Try It Yourself:</strong></p>
+<p>Write a function called <code>calculate_hr_reserve_percent</code> that takes three arguments: <code>current_hr</code>, <code>resting_hr</code>, and <code>max_hr</code>. The function should calculate the heart rate reserve percentage using the formula: <code>((current_hr - resting_hr) / (max_hr - resting_hr)) * 100</code>. Test your function with some values.</p>
+</section>
+<section id="functions-for-modeling-calculating-rates-of-change" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="functions-for-modeling-calculating-rates-of-change"><span class="header-section-number">2.6.3</span> Functions for Modeling: Calculating Rates of Change</h3>
+<p>Now, let’s connect this to differential equations. As we discussed, a differential equation model describes the <em>rate of change</em> of variables based on their <em>current state</em> and model parameters. When we use R packages like <code>deSolve</code> to solve these equations numerically, we need to provide the solver with an R function that can calculate these rates of change.</p>
+<p>This function will have a specific structure required by the solver, but conceptually, it does exactly what we described: it takes the current values of the state variables and parameters as input and returns the calculated instantaneous rates of change for each variable.</p>
+<p>Let’s revisit the simple drug clearance example: <span class="math inline">\(\frac{dC}{dt} = -kC\)</span>. We need a function that, given the current concentration (<span class="math inline">\(C\)</span>) and the parameter (<span class="math inline">\(k\)</span>), calculates the rate of change of <span class="math inline">\(C\)</span>.</p>
+<p>In R, this function might look conceptually like this (the actual structure for <code>deSolve</code> is slightly different, but this illustrates the idea):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A function to calculate the rate of change for the drug concentration</span></span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a>calculate_clearance_rate <span class="ot">&lt;-</span> <span class="cf">function</span>(current_concentration, clearance_rate_constant) {</span>
+<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate the rate of change (dC/dt)</span></span>
+<span id="cb142-4"><a href="#cb142-4" aria-hidden="true" tabindex="-1"></a>  dC_dt <span class="ot">&lt;-</span> <span class="sc">-</span>clearance_rate_constant <span class="sc">*</span> current_concentration</span>
+<span id="cb142-5"><a href="#cb142-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-6"><a href="#cb142-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The function needs to return this rate of change</span></span>
+<span id="cb142-7"><a href="#cb142-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(dC_dt)</span>
+<span id="cb142-8"><a href="#cb142-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb142-9"><a href="#cb142-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-10"><a href="#cb142-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: If concentration is 50 and k is 0.1, what's the rate of change?</span></span>
+<span id="cb142-11"><a href="#cb142-11" aria-hidden="true" tabindex="-1"></a>rate_now <span class="ot">&lt;-</span> <span class="fu">calculate_clearance_rate</span>(<span class="at">current_concentration =</span> <span class="dv">50</span>, <span class="at">clearance_rate_constant =</span> <span class="fl">0.1</span>)</span>
+<span id="cb142-12"><a href="#cb142-12" aria-hidden="true" tabindex="-1"></a>rate_now</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -5</code></pre>
+</div>
+</div>
+<p>(<strong>Note</strong>: -5 means that concentration is decreasing at a rate of 5 units per unit of time.)</p>
+<p>This <code>calculate_clearance_rate</code> function embodies the differential equation <span class="math inline">\(\frac{dC}{dt} = -kC\)</span>. It takes the necessary inputs (the current state variable <code>current_concentration</code> and the parameter <code>clearance_rate_constant</code>) and calculates the instantaneous <code>dC_dt</code>.</p>
+<p>When you use <code>deSolve</code> to solve the differential equation, you will provide a function just like this (with a specific format required by <code>deSolve</code>). The solver will repeatedly call this function, giving it the current state of the variables, and use the returned rates of change to figure out the state at the next tiny step in time.</p>
+<p>Writing functions in R is a fundamental skill that makes your code efficient, organized, and reusable. More importantly for this book, defining functions that calculate the rates of change of your physiological variables is the core step in translating your mathematical model (the differential equations) into R code that the numerical solver can understand. As we move into Chapters 3 and 4, we will formalize the idea of rates of change and build simple models. Then, in Part 2, you will see exactly how to package these rate equations into R functions for use with the <code>deSolve</code> package, bringing your physiological blueprints to life as dynamic simulations.</p>
+</section>
+</section>
+<section id="introduction-to-r-packages-relevant-for-modeling" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="introduction-to-r-packages-relevant-for-modeling"><span class="header-section-number">2.7</span> Introduction to R packages relevant for modeling</h2>
+<p>Throughout this chapter, we’ve built a foundation in R, covering basic syntax, data types, handling collections of data in vectors and data frames, importing/exporting files, and writing simple functions. You now have the essential building blocks of the R language. However, the true power of R, especially for specialized tasks like solving differential equations and creating advanced visualizations, comes from its vast ecosystem of <strong>packages</strong>.</p>
+<p>Think of R itself as the core operating system – it provides the fundamentals. R packages are like applications or software extensions that you can install to add specialized capabilities. They are collections of functions, data sets, and documentation contributed by the R community. For physiological modeling, we will rely heavily on a few key packages that provide the sophisticated tools we need.</p>
+<section id="what-are-r-packages-and-why-use-them" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="what-are-r-packages-and-why-use-them"><span class="header-section-number">2.7.1</span> What are R Packages and Why Use Them?</h3>
+<p>A package in R is essentially a bundle of code, documentation, and sometimes data, that extends the functionality of base R. When you install R, you get the base installation with fundamental functions for statistics, data manipulation, and basic plotting. However, for almost any specialized task – whether it’s advanced statistical modeling, geographic information systems, bioinformatics, or solving differential equations – you will need to install and use packages.</p>
+<p>Why are packages so important for dynamic modeling?</p>
+<ol type="1">
+<li><strong>Access to Specialized Algorithms:</strong> Solving differential equations numerically requires complex algorithms that have been developed and refined over many years. Packages like <code>deSolve</code> provide access to highly efficient and reliable implementations of these algorithms, saving us from having to code them from scratch (a task requiring significant expertise in numerical analysis).</li>
+<li><strong>Streamlined Workflows:</strong> Packages often bundle related functions together, providing a coherent set of tools for a specific task (like plotting with <code>ggplot2</code>). This streamlines your workflow and makes complex tasks more manageable.</li>
+<li><strong>Leveraging Community Expertise:</strong> Packages are often developed by experts in specific fields. By using a package, you are leveraging their expertise and benefiting from tested and documented code.</li>
+<li><strong>Access to Advanced Visualization:</strong> While base R can plot, packages like <code>ggplot2</code> offer much greater flexibility and control over plot aesthetics, allowing you to create the clear, customized, publication-quality graphics necessary to understand and present complex model outputs and compare them effectively with experimental data.</li>
+</ol>
+<p>Finding packages is typically done through the Comprehensive R Archive Network (CRAN), which is the primary repository for R packages. When a package is accepted on CRAN, it has met certain quality standards.</p>
+</section>
+<section id="installing-and-loading-packages" class="level3" data-number="2.7.2">
+<h3 data-number="2.7.2" class="anchored" data-anchor-id="installing-and-loading-packages"><span class="header-section-number">2.7.2</span> Installing and Loading Packages</h3>
+<p>Using a package is a two-step process:</p>
+<ol type="1">
+<li><p><strong>Installation:</strong> You download the package files from a repository (like CRAN) and install them onto your computer. This only needs to be done <em>once</em> for a given version of R on your machine. You use the <code>install.packages()</code> function for this. The package name must be in quotes.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the deSolve package</span></span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"deSolve"</span>)</span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the ggplot2 package</span></span>
+<span id="cb144-5"><a href="#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb144-6"><a href="#cb144-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-7"><a href="#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="co"># You can install multiple packages at once using a vector of names</span></span>
+<span id="cb144-8"><a href="#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"deSolve"</span>, <span class="st">"ggplot2"</span>, <span class="st">"tidyr"</span>)) <span class="co"># tidyr is useful for plotting!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When you run <code>install.packages()</code>, R might ask you to choose a CRAN mirror (a server location). Choose one that is geographically close to you.</p></li>
+<li><p><strong>Loading (Attaching):</strong> After installation, the package files are on your computer, but their functions are not automatically available in your R session when you start RStudio. You need to <strong>load</strong> or <strong>attach</strong> the package to make its functions accessible in the current session. You do this using the <code>library()</code> function. The package name does <em>not</em> need to be in quotes here, although it works if you include them.</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the deSolve package for the current session</span></span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(deSolve)</span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the ggplot2 package</span></span>
+<span id="cb145-5"><a href="#cb145-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-7"><a href="#cb145-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyr package</span></span>
+<span id="cb145-8"><a href="#cb145-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You need to run <code>library()</code> for each package you want to use <em>every time</em> you start a new R session. It’s common practice to put <code>library()</code> calls for all the packages your script uses at the very beginning of the script.</p>
+<p><em>R Tip:</em> RStudio has a convenient “Packages” tab in the bottom-right pane. You can see installed packages there, and check/uncheck boxes to load/unload them without typing the <code>library()</code> command. However, typing <code>library()</code> in your script is better for reproducibility, as anyone running your script will automatically load the necessary packages (assuming they are installed).</p></li>
+</ol>
+</section>
+<section id="getting-help-for-packages" class="level3" data-number="2.7.3">
+<h3 data-number="2.7.3" class="anchored" data-anchor-id="getting-help-for-packages"><span class="header-section-number">2.7.3</span> Getting Help for Packages</h3>
+<p>Just like with base R functions, you can get help for packages and their functions:</p>
+<ul>
+<li>To see a list of functions and documentation for an installed package, you can use <code>help(package = "package_name")</code>.</li>
+<li>To get help for a specific function within a package (e.g., the <code>ode</code> function in <code>deSolve</code>), use the standard <code>?</code> syntax: <code>?ode</code>. If a function name exists in multiple packages, you can specify the package explicitly using <code>package_name::function_name</code>, e.g., <code>?deSolve::ode</code>.</li>
+</ul>
+</section>
+<section id="key-packages-for-physiological-modeling-in-this-book" class="level3" data-number="2.7.4">
+<h3 data-number="2.7.4" class="anchored" data-anchor-id="key-packages-for-physiological-modeling-in-this-book"><span class="header-section-number">2.7.4</span> Key Packages for Physiological Modeling in this Book</h3>
+<p>Two packages will be central to our work in this book:</p>
+<p><strong>The <code>deSolve</code> Package: Your ODE Solver</strong></p>
+<ul>
+<li><strong>What it does:</strong> The <code>deSolve</code> package provides a comprehensive suite of numerical solvers for initial value problems of ordinary differential equations (ODEs), as well as other types of differential equations. This is the engine that will take your mathematical model (defined as an R function calculating rates of change) and simulate its behavior over time.</li>
+<li><strong>Why it’s important for modeling:</strong> As discussed in Chapter 1, analytical solutions for physiological ODE models are rare. <code>deSolve</code> implements robust numerical methods that can handle the complexities of realistic biological systems, including non-linearities and “stiff” systems (which are common in biology and require specialized solvers).</li>
+<li><strong>Key Function (<code>ode</code>):</strong> The primary function we will use from <code>deSolve</code> is <code>ode()</code>. In Chapter 5, we will delve into the details of how to use <code>ode()</code>, but conceptually, it takes:
+<ul>
+<li>A function that defines your physiological model (i.e., calculates the rates of change, like the <code>calculate_clearance_rate</code> function idea from the previous section, but in a format <code>deSolve</code> expects).</li>
+<li>The initial values of your state variables (e.g., initial heart rate, initial hormone concentration).</li>
+<li>The time points at which you want the solution (e.g., every second for 10 minutes).</li>
+<li>Any parameters your model needs (e.g., rate constants, sensitivities).</li>
+<li>It then returns a data frame containing the time points and the corresponding simulated values of all your state variables.</li>
+</ul></li>
+<li><strong>Connecting to the Blueprint:</strong> If your physiological understanding is the conceptual blueprint and the differential equations are the detailed drawings, <code>deSolve</code> is the simulation engine that builds the dynamic structure from those drawings, showing you how it behaves over time.</li>
+</ul>
+<p>We will dedicate Chapter 5 entirely to understanding and using the <code>deSolve</code> package to solve ODE models.</p>
+<p><strong>The <code>ggplot2</code> Package: Your Visualization Powerhouse</strong></p>
+<ul>
+<li><strong>What it does:</strong> The <code>ggplot2</code> package is arguably the most popular package for creating graphics in R. It provides a flexible and elegant system for building plots layer by layer, based on the “grammar of graphics”.</li>
+<li><strong>Why it’s important for modeling:</strong> As we emphasized earlier, visualization is key to understanding dynamic models. <code>ggplot2</code> allows us to create informative time series plots of our simulated model outputs, compare multiple simulation runs, and overlay experimental data points on top of model predictions. Its consistent syntax and powerful customization options make it ideal for creating the clear, publication-quality figures needed to communicate modeling results. Since <code>deSolve</code> output is a data frame, <code>ggplot2</code>, which works seamlessly with data frames, is the perfect companion.</li>
+<li><strong>Key Function (<code>ggplot</code>):</strong> The core function is <code>ggplot()</code>, which initializes a plot and specifies the data and aesthetic mappings. As we saw in the previous section, you add layers like points (<code>geom_point()</code>) and lines (<code>geom_line()</code>) using the <code>+</code> operator.</li>
+<li><strong>Connecting to the Blueprint:</strong> If <code>deSolve</code> runs the simulation, <code>ggplot2</code> is the tool that lets you visually inspect the output, like watching the simulated heart rate trace change over time or comparing it side-by-side with your experimental data points.</li>
+</ul>
+<p>We will revisit <code>ggplot2</code> in Chapter 7 and subsequent chapters, applying its capabilities specifically to visualizing the dynamic outputs of our physiological models.</p>
+<p><strong>Other Relevant Packages</strong></p>
+<p>While <code>deSolve</code> and <code>ggplot2</code> are the stars of the show for core modeling and visualization, you might encounter or find useful other packages:</p>
+<ul>
+<li><code>tidyr</code>: (already introduced briefly) Useful for tidying and reshaping data frames, including getting data into the “long” format often best for <code>ggplot2</code>.</li>
+<li><code>dplyr</code>: Provides a powerful and consistent set of functions for data manipulation (filtering, selecting, arranging, summarizing data frames). Excellent for preparing experimental data before comparing it to models.</li>
+<li>Packages for Parameter Estimation: If you move towards statistically fitting model parameters to data, you might use built-in functions like <code>optim</code> or packages specifically designed for model fitting in a biological context, but that’s beyond the scope of introductory modeling.</li>
+</ul>
+<p>R packages are essential extensions that add specialized functionality to R. For physiological modeling with differential equations, the <code>deSolve</code> package provides the crucial tools for numerically solving the equations and simulating dynamic behavior, while the <code>ggplot2</code> package provides the powerful capabilities needed to visualize the resulting time series and compare them with experimental data. You now know how to install and load these (and other) packages, making their functions available for use.</p>
+<p>With the R basics covered in this chapter – setting up R/RStudio, basic syntax, data structures, importing/exporting, writing functions, and using packages – you have the fundamental computational skills needed. In the next chapter, we will return to the mathematical side, delving deeper into the concept of rates of change, preparing us to truly start building and solving physiological differential equation models in R in the chapters that follow.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -979,7 +2342,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/edit/main/02-a_gentle_introduction_to_r_for_modelers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/edit/main/02-a_gentle_introduction_to_r_for_modelers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
