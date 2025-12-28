@@ -17,6 +17,7 @@ book:
   chapters:
     - index.qmd
     - dedication.qmd
+    - preface.qmd
     - part: "Foundations in Modeling and R"
       chapters: 
         - 01-why-model-physiology.qmd

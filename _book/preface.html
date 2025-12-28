@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Introduction to the deSolve Package – The Physiological Blueprint</title>
+<title>Preface – The Physiological Blueprint</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06-numerical_methods_for_solving_odes.html" rel="next">
-<link href="./04-building_simple_differential_equation_models.html" rel="prev">
+<link href="./01-why-model-physiology.html" rel="next">
+<link href="./dedication.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -249,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-introduction_to_the_desolve_package.html">Solving, Simulating, and Visualizing ODEs in R</a></li><li class="breadcrumb-item"><a href="./05-introduction_to_the_desolve_package.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to the <code>deSolve</code> Package</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./preface.html">Preface</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -339,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./preface.html" class="sidebar-item-text sidebar-link">
+  <a href="./preface.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -389,7 +389,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-introduction_to_the_desolve_package.html" class="sidebar-item-text sidebar-link active">
+  <a href="./05-introduction_to_the_desolve_package.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to the <code>deSolve</code> Package</span></span></a>
   </div>
 </li>
@@ -523,16 +523,24 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#why-r-why-now" id="toc-why-r-why-now" class="nav-link active" data-scroll-target="#why-r-why-now">Why R? Why Now?</a></li>
+  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to Use This Book</a></li>
+  <li><a href="#a-note-to-the-reader" id="toc-a-note-to-the-reader" class="nav-link" data-scroll-target="#a-note-to-the-reader">A Note to the Reader</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/edit/main/preface.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-introduction_to_the_desolve_package.html">Solving, Simulating, and Visualizing ODEs in R</a></li><li class="breadcrumb-item"><a href="./05-introduction_to_the_desolve_package.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to the <code>deSolve</code> Package</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to the <code>deSolve</code> Package</span></h1>
+<h1 class="title">Preface</h1>
 </div>
 
 
@@ -549,8 +557,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>I remember the first time I saw a real-time heart rate trace on a monitor. To most, it’s just a jagged green line, a nervous twitch of light. But if you stare at it long enough, you realize you aren’t just looking at data; you’re looking at a performance. You’re watching the dance of the nerves, the sympathetic and parasympathetic systems locked in a constant, elegant dance to maintain the balance we call life.</p>
+<p>I wrote this book because I spent years frustrated by the way we teach physiology. Usually, it’s a list of parts to memorize. Then, we go to math class, and it’s a list of formulas to apply. But the body doesn’t exist in a vacuum, and math isn’t just a hurdle to clear.</p>
+<p><strong>The Physiological Blueprint</strong> is about the intersection of the two. It’s about understanding the architecture of life through the lens of movement. We aren’t interested in static snapshots; we want to know <em>how</em> things change. Why does a runner’s heart rate settle at 150 beats per minute? Why does a drug clear the blood in hours rather than seconds?</p>
+<p>To answer these, we need a language that speaks in “rates of change”. That language is Ordinary Differential Equations (ODEs).</p>
+<section id="why-r-why-now" class="level3">
+<h3 class="anchored" data-anchor-id="why-r-why-now">Why R? Why Now?</h3>
+<p>You might wonder why we’re using R. Some see it as a tool for “just statistics”, but I see it as a high-fidelity lens. With modern packages we can take an abstract idea and turn it into a living simulation in a few lines of code. We are living in a golden age where the barrier between a biological hypothesis and a digital model is thinner than it’s ever been.</p>
+</section>
+<section id="how-to-use-this-book" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-use-this-book">How to Use This Book</h3>
+<p>This isn’t a “Definition-Theorem-Proof” textbook. We aren’t here to grind through manual integrations that a computer can do in a millisecond. Instead, we are going to focus on:</p>
+<ul>
+<li><strong>Intuition:</strong> What is the biology actually <em>doing</em>?</li>
+<li><strong>Implementation:</strong> How do we translate that “doing” into R code?</li>
+<li><strong>Interpretation:</strong> What does the model tell us about the <strong>ghost in the machine</strong>, those emergent properties of life that aren’t obvious until you see the system in motion?</li>
+</ul>
+<p>We’ll start with the basics of R, move through the mechanics of differential equations, and eventually build complex models of cardiovascular flow and autonomic control.</p>
+</section>
+<section id="a-note-to-the-reader" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-to-the-reader">A Note to the Reader</h3>
+<p>Biology is messy. It’s loud, it’s stochastic, and it’s gloriously complicated. A model will never be a perfect representation of a human being, and that’s okay. As the saying goes, “All models are wrong, but some are useful”. Our goal is to build models that are useful enough to help us see the blueprint underneath the skin.</p>
+<p>Grab a cup of coffee, fire up RStudio, and let’s get started. The architecture is waiting.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -967,13 +998,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04-building_simple_differential_equation_models.html" class="pagination-link" aria-label="Building Simple Differential Equation Models">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Building Simple Differential Equation Models</span></span>
+      <a href="./dedication.html" class="pagination-link" aria-label="Dedication">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Dedication</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06-numerical_methods_for_solving_odes.html" class="pagination-link" aria-label="Numerical Methods for Solving ODEs">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Numerical Methods for Solving ODEs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./01-why-model-physiology.html" class="pagination-link" aria-label="Why Model Physiology?">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why Model Physiology?</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -985,7 +1016,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/edit/main/05-introduction_to_the_desolve_package.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/edit/main/preface.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/matcasti/The-Physiological-Blueprint-Book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
