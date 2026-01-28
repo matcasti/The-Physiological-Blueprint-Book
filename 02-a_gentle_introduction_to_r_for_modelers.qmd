@@ -8,7 +8,7 @@ This chapter will provide you with a gentle introduction to the R skills you'll 
 
 You will need two main software components:
 
-1.  **R:** This is the statistical programming language itself – the engine that performs calculations, runs simulations, and executes commands.
+1.  **R:** This is the statistical programming language itself, the engine that performs calculations, runs simulations, and executes commands.
 2.  **RStudio:** This is a powerful and user-friendly Integrated Development Environment (IDE) for R. Think of R as the car's engine and RStudio as the dashboard, steering wheel, and comfortable seats. While you *can* interact directly with the R engine using a basic console, RStudio makes coding, managing files, viewing plots, and accessing help much, much easier. It's highly recommended to use RStudio when working with R.
 
 Both R and RStudio are free and open-source, available for Windows, macOS, and Linux operating systems.
@@ -17,7 +17,7 @@ Both R and RStudio are free and open-source, available for Windows, macOS, and L
 
 First, you need to install the R programming language.
 
-1. Go to the Comprehensive R Archive Network (CRAN) website. You can find it by searching for "CRAN R" or by navigating directly to [Insert CRAN URL here, e.g., [https://cran.r-project.org/](https://cran.r-project.org/)].
+1. Go to the Comprehensive R Archive Network (CRAN) website. You can find it by searching for "CRAN R" or by navigating directly to [https://cran.r-project.org/](https://cran.r-project.org/).
 2. On the CRAN website, find the download link appropriate for your operating system (Linux, macOS, or Windows).
 3. Follow the instructions for your specific OS to download the latest version of R.
 4. Once the download is complete, run the installer file. For most users, accepting the default installation options is recommended. Choose the installation directory, components, and startup options that are pre-selected unless you have a specific reason to change them.
@@ -26,8 +26,8 @@ First, you need to install the R programming language.
 
 Next, download and install RStudio.
 
-1. Go to the Posit website (Posit is the company that develops RStudio, formerly known as RStudio, PBC). You can find the download page by searching for "Download RStudio Desktop" or by navigating to [Insert Posit RStudio download URL here, e.g., [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/)].
-2. On the download page, locate the section for "RStudio Desktop". Choose the FREE version – this version has all the capabilities you will need for this book.
+1. Go to the Posit website (Posit is the company that develops RStudio, formerly known as RStudio, PBC). You can find the download page by searching for "Download RStudio Desktop" or by navigating to [https://posit.co/download/rstudio-desktop/](https://posit.co/download/rstudio-desktop/).
+2. On the download page, locate the section for "RStudio Desktop". Choose the FREE version, this version has all the capabilities you will need for this book.
 3. Select the download link that matches your operating system.
 4. Once the download is complete, run the installer file. Again, accepting the default installation options is typically the best approach unless you have specific IT requirements.
 
@@ -43,7 +43,7 @@ With R and RStudio successfully installed, you have the essential computational 
 
 ## Basic R syntax, data types, and operations
 
-With R and RStudio successfully installed, you now have the essential tools to begin your journey into physiological modeling. Think of RStudio as your laboratory workbench – it's where you will write the instructions for your models, perform simulations, analyze results, and create visualizations.
+With R and RStudio successfully installed, you now have the essential tools to begin your journey into physiological modeling. Think of RStudio as your laboratory workbench, it's where you will write the instructions for your models, perform simulations, analyze results, and create visualizations.
 
 This chapter is designed to give you just enough familiarity with R's fundamental building blocks to get started. We will focus only on the concepts and syntax that are directly relevant to defining, solving, and interacting with differential equation models later in the book. Don't feel the need to become an R expert overnight; our aim is practical application for modeling physiological dynamics.
 
@@ -81,7 +81,7 @@ At its most fundamental level, R can be used like a sophisticated calculator. Yo
 (100 / 5) + (15 * 2)
 ```
 
-R understands the standard order of operations (parentheses/brackets, exponents, multiplication/division, addition/subtraction – PEMDAS/BODMAS). You can use parentheses to ensure calculations are performed in the order you intend.
+R understands the standard order of operations (parentheses/brackets, exponents, multiplication/division, addition/subtraction, PEMDAS/BODMAS). You can use parentheses to ensure calculations are performed in the order you intend.
 
 Basic arithmetic operators:
 
@@ -251,7 +251,7 @@ Saving your script (`File > Save As...`) means you don't lose your work and can 
 
 ### Workspace and Saving Your Work
 
-The Environment pane (top-right) shows you the R "workspace" – all the objects (variables, functions) currently loaded in your session. When you close RStudio, it might ask if you want to save your workspace. Saving the workspace (`.RData` file) saves all the objects in your Environment, so they are there when you open RStudio again in that project directory. However, it is generally better practice for reproducibility to save your *scripts* (`.R` files) and ensure that running the script from beginning to end recreates all necessary objects. This way, you have a clear record of how your data and variables were created.
+The Environment pane (top-right) shows you the R "workspace", all the objects (variables, functions) currently loaded in your session. When you close RStudio, it might ask if you want to save your workspace. Saving the workspace (`.RData` file) saves all the objects in your Environment, so they are there when you open RStudio again in that project directory. However, it is generally better practice for reproducibility to save your *scripts* (`.R` files) and ensure that running the script from beginning to end recreates all necessary objects. This way, you have a clear record of how your data and variables were created.
 
 **Try It Yourself:**
 
@@ -573,14 +573,14 @@ Notice the comma after the condition `exercise_data$HeartRate > 100`. This indic
 
 **Data Frames and Model Output**
 
-Why is understanding data frames so important for this book? Because the standard output from R packages that solve differential equations, like the `deSolve` package we will use extensively, is a data frame\!
+Why is understanding data frames so important for this book? Because the standard output from R packages that solve differential equations, like the `deSolve` package we will use extensively, is a data frame!
 
 When you simulate a physiological model with `deSolve`, the result will be a data frame where:
 
   * The first column contains the time points.
   * Subsequent columns contain the predicted values of each of your state variables (HeartRate, SympatheticTone, etc.) at those time points.
 
-You will then use the techniques learned in this section – accessing columns by name (`$`), selecting specific rows (e.g., for a time window), and using these columns as vectors – to analyze the simulation results and create visualizations.
+You will then use the techniques learned in this section, accessing columns by name (`$`), selecting specific rows (e.g., for a time window), and using these columns as vectors, to analyze the simulation results and create visualizations.
 
 **Try It Yourself:**
 
@@ -596,11 +596,11 @@ Mastering how to create, inspect, access, and perform basic operations on data f
 
 ## Importing and exporting data
 
-Much of the power of mathematical modeling comes from its ability to help us interpret and understand real-world data. In your research, you collect physiological measurements – heart rate, blood pressure, gas exchange variables, EMG signals, force output, and many others. To compare your model simulations to these experimental results, or to use your data to inform model parameters, you first need to get this data into R. Similarly, after running a model simulation, you might want to save the predicted time course of your variables to a file for later analysis or sharing.
+Much of the power of mathematical modeling comes from its ability to help us interpret and understand real-world data. In your research, you collect physiological measurements, heart rate, blood pressure, gas exchange variables, EMG signals, force output, and many others. To compare your model simulations to these experimental results, or to use your data to inform model parameters, you first need to get this data into R. Similarly, after running a model simulation, you might want to save the predicted time course of your variables to a file for later analysis or sharing.
 
 This section will cover the essential skills for importing data from external files into R and exporting data (like your simulation results) from R to files.
 
-As we learned in the previous section, R's **data frame** structure is perfectly suited for handling tabular data – the rows represent observations (e.g., time points, subjects), and the columns represent different variables (e.g., Time, HeartRate, VO2, SubjectID). Most physiological data you'll encounter in spreadsheets or text files can be easily imported into an R data frame.
+As we learned in the previous section, R's **data frame** structure is perfectly suited for handling tabular data, the rows represent observations (e.g., time points, subjects), and the columns represent different variables (e.g., Time, HeartRate, VO2, SubjectID). Most physiological data you'll encounter in spreadsheets or text files can be easily imported into an R data frame.
 
 ### Setting Your Working Directory
 
@@ -787,7 +787,7 @@ write.table(simulation_output, "my_simulation_results.txt", sep = "\t", row.name
 
 Being able to import and export data is a fundamental skill for using R in research. Importing allows you to bring your experimental physiological data into R data frames, which you can then use for analysis, visualization, and crucially, comparison with your model simulations later on. Exporting allows you to save the output of your models or any processed data frames. With the ability to handle single values, vectors, data frames, and import/export files, you have the basic data manipulation skills needed to start working with R in a research context.
 
-In the next section, we'll build on this by learning how to create plots – the essential step for visualizing your data and your model's dynamic outputs.
+In the next section, we'll build on this by learning how to create plots, the essential step for visualizing your data and your model's dynamic outputs.
 
 ## Basic plotting in R
 
@@ -974,7 +974,7 @@ You can specify the filename, directory (if not the working directory), dimensio
 5.  Create a single plot showing the time courses of `HeartRate`, `DeltaBP`, and `AbsoluteBP` on the same graph, colored by variable. Add appropriate labels and a title. Apply a theme like `theme_classic()`.
 6.  Save one of your plots as a PNG file.
 
-Visualization is paramount for understanding dynamic physiological data and the output of our models. While Base R graphics offer a quick plotting option, `ggplot2` provides a powerful, flexible, and systematic way to create high-quality plots, especially when working with data frames containing multiple variables or simulation results. By understanding the fundamental concepts of `ggplot2` – mapping data to aesthetics within `aes()` and adding visual layers with `geom_` functions – and learning how to customize labels, colors, and line types, you have gained the essential skills to visualize both your experimental data and the dynamic predictions from your physiological models. This ability to see and interpret the dynamic behavior is a cornerstone of using differential equations for physiological insight.
+Visualization is paramount for understanding dynamic physiological data and the output of our models. While Base R graphics offer a quick plotting option, `ggplot2` provides a powerful, flexible, and systematic way to create high-quality plots, especially when working with data frames containing multiple variables or simulation results. By understanding the fundamental concepts of `ggplot2`, mapping data to aesthetics within `aes()` and adding visual layers with `geom_` functions, and learning how to customize labels, colors, and line types, you have gained the essential skills to visualize both your experimental data and the dynamic predictions from your physiological models. This ability to see and interpret the dynamic behavior is a cornerstone of using differential equations for physiological insight.
 
 ## Writing simple R functions
 
@@ -1124,11 +1124,11 @@ Writing functions in R is a fundamental skill that makes your code efficient, or
 
 Throughout this chapter, we've built a foundation in R, covering basic syntax, data types, handling collections of data in vectors and data frames, importing/exporting files, and writing simple functions. You now have the essential building blocks of the R language. However, the true power of R, especially for specialized tasks like solving differential equations and creating advanced visualizations, comes from its vast ecosystem of **packages**.
 
-Think of R itself as the core operating system – it provides the fundamentals. R packages are like applications or software extensions that you can install to add specialized capabilities. They are collections of functions, data sets, and documentation contributed by the R community. For physiological modeling, we will rely heavily on a few key packages that provide the sophisticated tools we need.
+Think of R itself as the core operating system, it provides the fundamentals. R packages are like applications or software extensions that you can install to add specialized capabilities. They are collections of functions, data sets, and documentation contributed by the R community. For physiological modeling, we will rely heavily on a few key packages that provide the sophisticated tools we need.
 
 ### What are R Packages and Why Use Them?
 
-A package in R is essentially a bundle of code, documentation, and sometimes data, that extends the functionality of base R. When you install R, you get the base installation with fundamental functions for statistics, data manipulation, and basic plotting. However, for almost any specialized task – whether it's advanced statistical modeling, geographic information systems, bioinformatics, or solving differential equations – you will need to install and use packages.
+A package in R is essentially a bundle of code, documentation, and sometimes data, that extends the functionality of base R. When you install R, you get the base installation with fundamental functions for statistics, data manipulation, and basic plotting. However, for almost any specialized task, whether it's advanced statistical modeling, geographic information systems, bioinformatics, or solving differential equations, you will need to install and use packages.
 
 Why are packages so important for dynamic modeling?
 
@@ -1219,4 +1219,4 @@ While `deSolve` and `ggplot2` are the stars of the show for core modeling and vi
 
 R packages are essential extensions that add specialized functionality to R. For physiological modeling with differential equations, the `deSolve` package provides the crucial tools for numerically solving the equations and simulating dynamic behavior, while the `ggplot2` package provides the powerful capabilities needed to visualize the resulting time series and compare them with experimental data. You now know how to install and load these (and other) packages, making their functions available for use.
 
-With the R basics covered in this chapter – setting up R/RStudio, basic syntax, data structures, importing/exporting, writing functions, and using packages – you have the fundamental computational skills needed. In the next chapter, we will return to the mathematical side, delving deeper into the concept of rates of change, preparing us to truly start building and solving physiological differential equation models in R in the chapters that follow.
+With the R basics covered in this chapter, setting up R/RStudio, basic syntax, data structures, importing/exporting, writing functions, and using packages, you have the fundamental computational skills needed. In the next chapter, we will return to the mathematical side, delving deeper into the concept of rates of change, preparing us to truly start building and solving physiological differential equation models in R in the chapters that follow.

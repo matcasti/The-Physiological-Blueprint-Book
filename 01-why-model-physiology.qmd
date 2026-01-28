@@ -28,7 +28,7 @@ There's a famous trap that new modelers often fall into: they try to include *ev
 
 Think of a map. If a map of a city were life-sized and contained every blade of grass and every pebble on the street, it wouldn't be a map, it would just be the city. To be useful, a map must be a simplification. It must highlight the roads and the landmarks while ignoring the clutter.
 
-This is the true power of mathematical modeling in physiology. It forces us to ask: What actually matters? When we sit down at our keyboards and start writing R code to simulate a cardiovascular system, we are making decisions about the "architecture of life". We are deciding which variables are the pillars of the system and which are just the decorative molding. By stripping away the noise, we reveal the underlying mechanisms. If our simplified model can still predict how a heart reacts to a sudden sprint, then we know we've captured the essence of the system. We've found the blueprint.
+This is the true power of mathematical modeling in physiology. It forces us to ask: What actually matters? When we start writing R code to simulate a cardiovascular system, we are making decisions about the "architecture of life". We are deciding which variables are the pillars of the system and which are just the decorative molding. By stripping away the noise, we reveal the underlying mechanisms. If our simplified model can still predict how a heart reacts to a sudden sprint, then we know we've captured the essence of the system. We've found the blueprint.
 
 ### Seeing the Unseen: Emergent Properties
 
@@ -337,7 +337,7 @@ Suddenly, the math isn't an obstacle. You see how the heart rate "hunts" for its
 
 ### From Theory to Reality (Fast)
 
-In a lab, an experiment might take weeks. In R, a simulation takes milliseconds. 
+In a lab, an experiment might take weeks. In R, a simulation takes milliseconds.
 
 This speed changes the way you think. When the "cost" of being wrong is just a few seconds of compute time, you become more adventurous. You start asking more "What-If" questions. What if I double the resistance in the femoral artery? What if the vagus nerve is 20% less sensitive? What if this athlete is dehydrated?
 

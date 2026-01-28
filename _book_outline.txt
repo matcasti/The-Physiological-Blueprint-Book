@@ -2,7 +2,7 @@ This outline progresses from foundational mathematical concepts and R basics to 
 
 **Book Title:** The Physiological Blueprint: Modeling Biological Systems with Ordinary Differential Equations in R
 
-**The Persona:** Imagine a 26-year old mentor up-to-date with the latest R packages. He uses phrases like "the architecture of life", "the dance of the nerves", and "the ghost in the machine".
+**The Persona:** Imagine a 26-year old mentor up-to-date with the latest R packages. He uses a very personal and intimate tone, using personal anecdotes about his experiences using R and learning stats on his own.
 
 **Tone:** Narrative, anecdotal, encouraging, and slightly philosophical. It avoids the dry, "Definition-Theorem-Proof" style.
 
@@ -12,7 +12,7 @@ This outline progresses from foundational mathematical concepts and R basics to 
 
 ---
 
-**Detailed Book Outline:**
+**Book Outline:**
 
 **Part 1: Foundations in Modeling and R (Approx. 60-80 pages)**
 
