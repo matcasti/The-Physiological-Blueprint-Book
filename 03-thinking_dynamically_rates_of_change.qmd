@@ -157,14 +157,16 @@ y <- y_true + rnorm(2000, 0, 8)
 
 heart_data <- data.frame(Time = rep(x, times = 3), 
                          HR = c(y, y_true, y_deriv),
-                         Type = rep(x = c("HR", "True HR", "Derivative"), each = 2000))
+                         Type = rep(x = c("Observed HR", "True HR", "Derivative (or Impulse)"), each = 2000))
 
 library(ggplot2)
 
 theme_set(new = theme_classic(base_size = 12))
 
 ggplot(heart_data, aes(Time, HR, col = Type)) +
-    facet_grid(rows = vars(Type), scales = "free_y") +
+    facet_wrap(~Type, nrow = 3, scales = "free_y") +
+    geom_hline(data = data.frame(yintercept = 0, Type = "Derivative (or Impulse)", HR = 0, Time = 0), aes(yintercept = yintercept),
+               linetype = 2) +
     geom_line() +
     scale_x_continuous(expand = c(0,0)) +
     scale_color_brewer(type = "qual", palette = 6) +
